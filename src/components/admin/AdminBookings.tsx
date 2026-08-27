@@ -1,34 +1,26 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  CalendarCheck,
   Search,
-  Filter,
-  CheckCircle2,
-  Clock,
-  Car,
-  Building,
-  User,
-  Users,
-  Sparkles
+  User
 } from 'lucide-react';
 import { BookingRecord } from '../../types';
 
 export const AdminBookings: React.FC = () => {
   const { bookingsList, updateBookingStatus, formatCurrency } = useApp();
-  const [filterStatus, setFilterStatus] = useState<string>('All');
+  const [filterStatus, setFilterStatus] = useState<string>('全部');
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const statuses: ('All' | BookingRecord['status'])[] = [
-    'All',
-    'Confirmed',
-    'In Progress',
-    'Completed',
-    'Pending Concierge'
+  const statuses: ('全部' | BookingRecord['status'])[] = [
+    '全部',
+    '已确认锁定',
+    '进行中/在途',
+    '已圆满完成',
+    '专属管家对接中'
   ];
 
   const filteredBookings = bookingsList.filter(b => {
-    const matchStatus = filterStatus === 'All' || b.status === filterStatus;
+    const matchStatus = filterStatus === '全部' || b.status === filterStatus;
     const matchSearch = b.memberName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       b.bookingRef.toLowerCase().includes(searchTerm.toLowerCase()) ||
       b.packageName.toLowerCase().includes(searchTerm.toLowerCase());
@@ -37,11 +29,11 @@ export const AdminBookings: React.FC = () => {
 
   const getStatusColor = (status: BookingRecord['status']) => {
     switch (status) {
-      case 'Confirmed':
+      case '已确认锁定':
         return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40';
-      case 'In Progress':
+      case '进行中/在途':
         return 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40';
-      case 'Completed':
+      case '已圆满完成':
         return 'bg-purple-500/20 text-purple-300 border-purple-500/40';
       default:
         return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
@@ -53,9 +45,9 @@ export const AdminBookings: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-white">Booking Operations & Dispatch</h2>
+          <h2 className="text-2xl font-serif font-bold text-white">沙巴履约与调度管理中心</h2>
           <p className="text-xs text-slate-400 mt-1">
-            Real-time fulfillment tracking of luxury package reservations, VIP chauffeur assignments, and 5-star suite allocations.
+            实时监控全沙巴奢华文旅订单履约全流程、专车机队派工状态及五星级套房锁房进展。
           </p>
         </div>
 
@@ -64,7 +56,7 @@ export const AdminBookings: React.FC = () => {
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search booking ref, guest..."
+              placeholder="搜索预订号、会员姓名..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               className="pl-8 pr-4 py-1.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 focus:border-emerald-500 focus:outline-none w-56"
@@ -113,7 +105,7 @@ export const AdminBookings: React.FC = () => {
 
               <div className="flex items-center space-x-4">
                 <div className="text-right">
-                  <span className="text-[10px] text-slate-500 uppercase block">Total Value</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">订单总额</span>
                   <span className="text-base font-serif font-bold text-amber-400">{formatCurrency(bk.amountUSD)}</span>
                 </div>
 
@@ -123,10 +115,10 @@ export const AdminBookings: React.FC = () => {
                   onChange={e => updateBookingStatus(bk.id, e.target.value as BookingRecord['status'])}
                   className={`text-xs font-bold py-1.5 px-3 rounded-lg border bg-slate-950 focus:outline-none cursor-pointer ${getStatusColor(bk.status)}`}
                 >
-                  <option value="Confirmed">Confirmed</option>
-                  <option value="In Progress">In Progress</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Pending Concierge">Pending Concierge</option>
+                  <option value="已确认锁定">已确认锁定</option>
+                  <option value="进行中/在途">进行中/在途</option>
+                  <option value="已圆满完成">已圆满完成</option>
+                  <option value="专属管家对接中">专属管家对接中</option>
                 </select>
               </div>
             </div>
@@ -134,29 +126,29 @@ export const AdminBookings: React.FC = () => {
             {/* Operational Dispatch Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
               <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
-                <span className="text-[10px] text-slate-500 uppercase block">Travel Dates</span>
+                <span className="text-[10px] text-slate-500 uppercase block">行程周期</span>
                 <span className="text-slate-200 font-medium">{bk.travelDate}</span>
               </div>
 
               <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
-                <span className="text-[10px] text-slate-500 uppercase block">Guests</span>
-                <span className="text-slate-200 font-medium">{bk.guests} Passengers</span>
+                <span className="text-[10px] text-slate-500 uppercase block">出行人数</span>
+                <span className="text-slate-200 font-medium">{bk.guests} 位同行贵宾</span>
               </div>
 
               <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
-                <span className="text-[10px] text-slate-500 uppercase block">Wholesale Suite Locked</span>
-                <span className="text-emerald-400 font-medium truncate block">{bk.hotelBooked || 'Sutera Marina Suite'}</span>
+                <span className="text-[10px] text-slate-500 uppercase block">直连房源状态</span>
+                <span className="text-emerald-400 font-medium truncate block">{bk.hotelBooked || '丝绸港俱乐部海景套房'}</span>
               </div>
 
               <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
-                <span className="text-[10px] text-slate-500 uppercase block">Assigned Transport</span>
-                <span className="text-cyan-400 font-medium truncate block">{bk.assignedDriver || 'Capt. Firdaus (Lexus LM)'}</span>
+                <span className="text-[10px] text-slate-500 uppercase block">派工接驾机长/司机</span>
+                <span className="text-cyan-400 font-medium truncate block">{bk.assignedDriver || '菲尔道斯主管 (LM/专机)'}</span>
               </div>
             </div>
 
             {bk.specialRequests && (
               <div className="p-2.5 bg-slate-950/60 rounded-lg border border-slate-800/80 text-[11px] text-slate-300">
-                <strong className="text-amber-400">Special Notes: </strong>
+                <strong className="text-amber-400">会员专属定制备忘: </strong>
                 <span>{bk.specialRequests}</span>
               </div>
             )}

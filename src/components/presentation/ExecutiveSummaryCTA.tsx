@@ -1,14 +1,12 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  Sparkles,
   Smartphone,
   ShieldAlert,
   ArrowRight,
   TrendingUp,
   Award,
-  CheckCircle2,
-  Lock
+  CheckCircle2
 } from 'lucide-react';
 
 export const ExecutiveSummaryCTA: React.FC = () => {
@@ -21,20 +19,20 @@ export const ExecutiveSummaryCTA: React.FC = () => {
 
   const strategicMoats = [
     {
-      title: 'Captive Global Demand',
-      desc: '120k+ high-spending global Hermes membership base pre-qualified for luxury travel.'
+      title: '极高确定性的全球客群',
+      desc: '直接导入爱马仕全球12万+高净值会员，无需高昂的公域买量获客成本。'
     },
     {
-      title: 'First-Mover Inbound Hub',
-      desc: 'Exclusive wholesale agreements with 50+ tier-1 Sabah hotels, marinas, and dining partners.'
+      title: '区域运营商独占壁垒',
+      desc: '首发锁定沙巴50+顶级五星酒店、游艇码头与海鲜品牌的独家批发合作协议。'
     },
     {
-      title: 'High-Margin Take Rate',
-      desc: '22% - 28% blended operator gross margins across curated packages, transport, and merchant fees.'
+      title: '高毛利全闭环现金流',
+      desc: '22% - 28% 综合毛利率，覆盖定制套餐、房源利差、专车及商户佣金。'
     },
     {
-      title: 'Real-World Economy',
-      desc: 'Pure tangible tourism, luxury lifestyle, and closed-loop local merchant economic growth.'
+      title: '纯真实体经济与合规',
+      desc: '杜绝虚浮概念，完全依托沙巴真实的奢华文旅消费与高品质生活方式经济。'
     }
   ];
 
@@ -48,15 +46,15 @@ export const ExecutiveSummaryCTA: React.FC = () => {
         <div className="glass-card p-8 sm:p-12 rounded-3xl border-amber-500/40 bg-gradient-to-b from-slate-900/90 via-slate-900 to-slate-950 shadow-gold-lg text-center space-y-8">
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
             <Award className="w-4 h-4 text-amber-400" />
-            <span>Executive Summary & Next Steps</span>
+            <span>高管汇报总结与下一步推进</span>
           </div>
 
           <div className="space-y-4 max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-              Ready to Launch the Hermes Sabah Regional Engine
+              即刻启动爱马仕沙巴区域运营商落地引擎
             </h2>
             <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
-              Positioning Sabah as the premier eco-luxury playground for Hermes international members while securing high recurring margins for the regional operator.
+              将沙巴打造为爱马仕全球会员首屈一指的生态度假乐园，同时为运营商锁定高确定性、强现金流的丰厚年回报。
             </p>
           </div>
 
@@ -80,7 +78,7 @@ export const ExecutiveSummaryCTA: React.FC = () => {
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-cyan-lg/40 transition-all"
             >
               <Smartphone className="w-4 h-4 text-white" />
-              <span>Enter Member Demo (H Pass Sabah)</span>
+              <span>进入会员端 Demo (H Pass 沙巴)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
@@ -89,8 +87,8 @@ export const ExecutiveSummaryCTA: React.FC = () => {
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-emerald-lg/40 transition-all"
             >
               <ShieldAlert className="w-4 h-4 text-slate-950" />
-              <span>Enter Sabah Operator Console</span>
-              <ArrowRight className="w-4 h-4 text-slate-950" />
+              <span>进入沙巴运营商控制台</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
@@ -98,15 +96,15 @@ export const ExecutiveSummaryCTA: React.FC = () => {
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 border border-slate-700 transition-all"
             >
               <TrendingUp className="w-4 h-4 text-amber-400" />
-              <span>Review Financial Simulator</span>
+              <span>重温财务推演沙盘</span>
             </button>
           </div>
         </div>
 
         {/* Footer info */}
         <div className="text-center text-xs text-slate-500 space-y-2 pt-6">
-          <p>© 2026 Hermes Sabah Ecosystem. Regional Operator Master Plan. Confidential & Proprietary.</p>
-          <p className="text-[11px]">Designed for internal executive presentation and regional stakeholder alignment.</p>
+          <p>© 2026 Hermes Sabah Ecosystem 爱马仕沙巴生态体系. 区域运营商总体规划. 内部机密文件.</p>
+          <p className="text-[11px]">专用于内部高管战略汇报与区域股东合伙人审阅。</p>
         </div>
       </div>
     </section>

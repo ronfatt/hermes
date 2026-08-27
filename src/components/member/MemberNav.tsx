@@ -9,7 +9,6 @@ import {
   Gift,
   Ticket,
   UserCheck,
-  QrCode,
   Sparkles,
   ChevronDown
 } from 'lucide-react';
@@ -21,27 +20,26 @@ interface MemberNavProps {
 }
 
 export const MemberNav: React.FC<MemberNavProps> = ({ activeTab, setActiveTab }) => {
-  const { currentMember, setCurrentMember, membersList, formatCurrency } = useApp();
+  const { currentMember, setCurrentMember, membersList } = useApp();
   const [profileDropdown, setProfileDropdown] = React.useState(false);
 
   const tabs = [
-    { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
-    { id: 'explore', label: 'Explore Sabah', icon: <Compass className="w-4 h-4" /> },
-    { id: 'packages', label: 'VIP Packages', icon: <Package className="w-4 h-4" /> },
-    { id: 'merchants', label: 'Merchant Perks', icon: <Store className="w-4 h-4" /> },
-    { id: 'bookings', label: 'My Trips & Passes', icon: <CalendarCheck className="w-4 h-4" /> },
-    { id: 'rewards', label: 'H-Rewards Shop', icon: <Gift className="w-4 h-4" /> },
-    { id: 'events', label: 'VIP Events', icon: <Ticket className="w-4 h-4" /> },
+    { id: 'dashboard', label: '会员中心 (Dashboard)', icon: <LayoutDashboard className="w-4 h-4" /> },
+    { id: 'explore', label: '探索沙巴 (Explore)', icon: <Compass className="w-4 h-4" /> },
+    { id: 'packages', label: '旗舰套餐 (Packages)', icon: <Package className="w-4 h-4" /> },
+    { id: 'merchants', label: '商户特权 (Merchant Perks)', icon: <Store className="w-4 h-4" /> },
+    { id: 'bookings', label: '我的行程 (My Bookings)', icon: <CalendarCheck className="w-4 h-4" /> },
+    { id: 'rewards', label: '积分商城 (H-Rewards)', icon: <Gift className="w-4 h-4" /> },
+    { id: 'events', label: 'VIP 峰会活动 (Events)', icon: <Ticket className="w-4 h-4" /> },
   ];
 
   const getTierColor = (tier: string) => {
-    switch (tier) {
-      case 'Black VIP':
-        return 'bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-amber-500/20 border-amber-500/50 text-amber-300';
-      case 'Platinum':
-        return 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300';
-      default:
-        return 'bg-amber-500/20 border-amber-500/50 text-amber-300';
+    if (tier.includes('黑金')) {
+      return 'bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-amber-500/20 border-amber-500/50 text-amber-300';
+    } else if (tier.includes('白金')) {
+      return 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300';
+    } else {
+      return 'bg-amber-500/20 border-amber-500/50 text-amber-300';
     }
   };
 
@@ -69,7 +67,7 @@ export const MemberNav: React.FC<MemberNavProps> = ({ activeTab, setActiveTab })
               </span>
             </div>
             <div className="flex items-center space-x-3 text-xs text-slate-400 mt-1">
-              <span>{currentMember.memberNo}</span>
+              <span>卡号: {currentMember.memberNo}</span>
               <span>•</span>
               <span>{currentMember.country}</span>
               <span>•</span>
@@ -82,16 +80,16 @@ export const MemberNav: React.FC<MemberNavProps> = ({ activeTab, setActiveTab })
         <div className="flex flex-wrap items-center gap-3">
           <div className="bg-slate-950/80 px-3.5 py-2 rounded-xl border border-slate-800 text-right">
             <span className="text-[10px] uppercase tracking-wider text-slate-400 block font-semibold">
-              H-Reward Points
+              H-Credits 积分
             </span>
             <span className="text-sm font-bold text-amber-400">
-              {currentMember.points.toLocaleString()} pts
+              {currentMember.points.toLocaleString()} 分
             </span>
           </div>
 
           <div className="bg-slate-950/80 px-3.5 py-2 rounded-xl border border-slate-800 text-right">
             <span className="text-[10px] uppercase tracking-wider text-slate-400 block font-semibold">
-              Ecosystem Credits
+              沙巴生态消费金
             </span>
             <span className="text-sm font-bold text-emerald-400">
               RM {currentMember.creditsMYR.toLocaleString()}
@@ -105,14 +103,14 @@ export const MemberNav: React.FC<MemberNavProps> = ({ activeTab, setActiveTab })
               className="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 text-xs text-slate-200 flex items-center space-x-2"
             >
               <UserCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span>Switch Persona</span>
+              <span>切换演示卡级画像</span>
               <ChevronDown className="w-3 h-3 text-slate-400" />
             </button>
 
             {profileDropdown && (
               <div className="absolute right-0 mt-2 w-64 bg-slate-950 border border-slate-700 rounded-xl shadow-2xl p-2 z-50 space-y-1">
                 <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold px-2 block py-1">
-                  Select Demo Member Tier
+                  选择演示会员级别
                 </span>
                 {membersList.map((m: MemberProfile) => (
                   <button

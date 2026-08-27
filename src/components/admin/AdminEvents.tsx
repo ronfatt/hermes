@@ -1,13 +1,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  Ticket,
-  Calendar,
   MapPin,
-  Users,
-  CheckCircle2,
-  TrendingUp,
-  DollarSign,
   Plus
 } from 'lucide-react';
 import { VIPEvent } from '../../types';
@@ -16,7 +10,7 @@ export const AdminEvents: React.FC = () => {
   const { eventsList, formatCurrency, showToast } = useApp();
 
   const handleCreateEvent = () => {
-    showToast('Event Setup Initiated', 'Sabah International Convention Centre VIP hall allocation opened.', 'gold');
+    showToast('发起新峰会', '已向沙巴国际会议中心 (SICC) 发起会场档期预留与安保报备申请。', 'gold');
   };
 
   return (
@@ -24,9 +18,9 @@ export const AdminEvents: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-white">VIP Event & Summit Operations</h2>
+          <h2 className="text-2xl font-serif font-bold text-white">沙巴 VIP 年度峰会与活动运管</h2>
           <p className="text-xs text-slate-400 mt-1">
-            Capacity management, attendee rosters, and ticket revenue clearing for high-level summits in Sabah.
+            统筹大型国际文旅峰会席位容量、受邀高管名册、门票销售清算及品牌赞助收益。
           </p>
         </div>
 
@@ -35,7 +29,7 @@ export const AdminEvents: React.FC = () => {
           className="px-3.5 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-emerald-lg/20 self-start sm:self-auto"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span>New VIP Event</span>
+          <span>创建新活动/峰会</span>
         </button>
       </div>
 
@@ -69,7 +63,7 @@ export const AdminEvents: React.FC = () => {
 
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-slate-400">Capacity: {ev.rsvpCount} / {ev.capacity} Attendees</span>
+                      <span className="text-slate-400">席位饱和度: {ev.rsvpCount} / {ev.capacity} 位</span>
                       <span className="text-amber-400 font-bold">{capacityPercent}%</span>
                     </div>
                     <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
@@ -84,12 +78,12 @@ export const AdminEvents: React.FC = () => {
 
               <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-slate-500 uppercase block">Gross Ticket Sales</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">门票与赞助总毛利</span>
                   <span className="text-sm font-serif font-bold text-emerald-400">{formatCurrency(totalTicketGross)}</span>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[10px] text-slate-500 uppercase block">Tier Access</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">准入级别</span>
                   <span className="text-xs font-bold text-amber-300">{ev.accessTier}+</span>
                 </div>
               </div>

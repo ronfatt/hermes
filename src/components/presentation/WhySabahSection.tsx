@@ -1,83 +1,81 @@
 import React, { useState } from 'react';
 import {
-  MapPin,
   Plane,
   Trees,
   Waves,
   Building2,
   Gem,
   CheckCircle2,
-  Compass,
-  ArrowRight
+  Compass
 } from 'lucide-react';
 
 export const WhySabahSection: React.FC = () => {
   const [activePillar, setActivePillar] = useState<number>(0);
 
   const flightOrigins = [
-    { city: 'Singapore', time: '2h 20m', status: 'Direct Daily Flights' },
-    { city: 'Hong Kong', time: '3h 05m', status: 'Direct Daily Flights' },
-    { city: 'Taipei', time: '3h 30m', status: 'Direct Daily Flights' },
-    { city: 'Seoul / Incheon', time: '5h 15m', status: 'Direct Daily Flights' },
-    { city: 'Tokyo / Haneda', time: '5h 45m', status: 'Key Connecting Routes' },
-    { city: 'Shanghai / Shenzhen', time: '4h 00m', status: 'Direct Daily Flights' },
+    { city: '新加坡 (Singapore)', time: '2小时 20分', status: '每日多班直飞' },
+    { city: '中国香港 (Hong Kong)', time: '3小时 05分', status: '每日多班直飞' },
+    { city: '中国台北 (Taipei)', time: '3小时 30分', status: '每日直飞航线' },
+    { city: '韩国首尔 (Seoul)', time: '5小时 15分', status: '每日定期直飞' },
+    { city: '日本东京 (Tokyo)', time: '5小时 45分', status: '便捷联程航线' },
+    { city: '中国上海/深圳 (Shanghai)', time: '4小时 00分', status: '高频直飞航线' },
   ];
 
   const pillars = [
     {
       id: 'pillar-nature',
       icon: <Trees className="w-6 h-6 text-emerald-400" />,
-      title: 'UNESCO World Heritage & Ancient Rainforest',
-      subtitle: '130-Million-Year Old Biodiversity Sanctuary',
-      badge: 'Nature Capital of Asia',
+      title: '联合国教科文组织“三冠王”与远古雨林',
+      subtitle: '拥有1.3亿年历史的亚洲生态生物多样性宝库',
+      badge: '亚洲生态之都',
       image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&auto=format&fit=crop&q=80',
-      description: 'Sabah is one of only three places on Earth holding the UNESCO "Triple Crown" status (World Heritage Site, Biosphere Reserve, Global Geopark). Mount Kinabalu (4,095m) anchors an unmatched eco-luxury destination.',
+      description: '沙巴是全球极少数同时荣获联合国教科文组织 (UNESCO) “三冠王”殊荣（世界自然遗产、世界生物圈保护区、世界地质公园）的圣地。海拔4,095米的神山（京那巴鲁山）构筑起无可替代的生态野奢高地。',
       bullets: [
-        'Over 5,000 plant species and 600+ rare Bornean orchid varieties',
-        'Kinabalu Alpine chalets and Kundasang highland agritourism',
-        'Highland luxury retreats with pristine microclimate (18°C - 22°C)'
+        '拥有超过5,000种高等植物与600余种野生珍稀兰花品种',
+        '神山高海拔私家度假木屋与昆达山高山有机农业观光',
+        '常年18°C - 22°C的高山微气候，完美避暑与康养胜地'
       ]
     },
     {
       id: 'pillar-islands',
       icon: <Waves className="w-6 h-6 text-cyan-400" />,
-      title: 'World-Class Coral Triangle & Island Luxury',
-      subtitle: 'Pristine Marine Sanctuaries at Kota Kinabalu’s Doorstep',
-      badge: 'Coral Triangle Epicenter',
+      title: '世界级珊瑚大三角与海岛私密奢华',
+      subtitle: '距亚庇市中心仅15分钟航程的纯净海洋秘境',
+      badge: '珊瑚大三角核心',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
-      description: 'Just a 15-minute private yacht voyage from Kota Kinabalu city center lies the Tunku Abdul Rahman Marine Park, complemented by Gaya Island’s secluded luxury resorts and world-famous Tanjung Aru sunsets.',
+      description: '从亚庇市区码头乘私人快艇或游艇仅需15分钟，即可直达东姑阿都拉曼国家海洋公园5座纯净海岛，加雅岛的顶级水上独栋别墅与丹绒亚路世界级日落在此交相辉映。',
       bullets: [
-        'Tunku Abdul Rahman Marine Park (5 private islands and reefs)',
-        'Gaya Island private overwater villas & private marine reserves',
-        'Direct gateway to Sipadan & Tun Sakaran for world-class diving'
+        '东姑阿都拉曼国家海洋公园5座私密海岛与未受污染的珊瑚礁',
+        '加雅岛 YTL 等奢华水上度假村与专属海洋保育特权',
+        '直通仙本那、诗巴丹世界顶尖潜水胜地的天然中转门户'
       ]
     },
     {
       id: 'pillar-mice',
       icon: <Building2 className="w-6 h-6 text-amber-400" />,
-      title: 'High-Yield MICE & 5-Star Infrastructure',
-      subtitle: 'Sabah International Convention Centre & Luxury Marinas',
-      badge: 'Infrastructure Ready',
+      title: '成熟的五星级接待与高端会奖 (MICE) 配套',
+      subtitle: '沙巴国际会议中心 (SICC) 与五星游艇高尔夫综合体',
+      badge: '基础设施完备',
       image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80',
-      description: 'Kota Kinabalu combines authentic raw nature with world-class meeting and hospitality infrastructure. Home to the waterfront Sabah International Convention Centre (SICC) and premier 5-star marina resorts.',
+      description: '亚庇完美融合了原始大自然与成熟的现代高端接待能力。拥有临海而建、可容纳超5,000人的沙巴国际会议中心 (SICC)，以及拥有27洞锦标赛高尔夫球场与国际游艇码头的综合度假区。',
       bullets: [
-        'Sabah International Convention Centre (SICC) accommodating 5,000+ delegates',
-        'Sutera Harbour 27-hole Graham Marsh golf & private yacht marina',
-        'Shangri-La Tanjung Aru & Pacific Club executive hospitality'
+        '沙巴国际会议中心 (SICC) 具备举办全球千人级峰会与发布会能力',
+        '丝绸港湾 27洞格雷厄姆·马什设计锦标赛球场与专业游艇码头',
+        '香格里拉丹绒亚路、凯悦尚萃、艾美等国际五星级酒店集群'
       ]
     },
     {
       id: 'pillar-demographics',
       icon: <Gem className="w-6 h-6 text-purple-400" />,
-      title: 'Optimal Match for Hermes High-Net-Worth Profile',
-      subtitle: 'High Spending Power Meets Rare Experiential Luxury',
-      badge: 'HNW Member Appeal',
+      title: '精准契合爱马仕高净值会员消费偏好',
+      subtitle: '极高客单消费力与稀缺体验型奢华的完美融合',
+      badge: '高净值客群极度契合',
       image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80',
-      description: 'Global Hermes members are not looking for crowded mass tourism. They crave pristine private nature, helicopter safaris, gourmet private dining, rare Sabah South Sea pearls, and seamless VIP security escorts.',
+      description: '爱马仕全球高净值会员不再满足于同质化的走马观花，而是极度渴求远离尘嚣的私密纯粹自然、直升机私享巡航、私房主厨定制海鲜、顶级南洋金珠及全流程礼宾安保。',
       bullets: [
-        'Bespoke luxury packages with $1,800 to $7,200 member ticket sizes',
-        'Closed-loop merchant spending across dining, pearls, and wellness',
-        'High repeat travel potential through tiered ecosystem privileges'
+        '高端定制套餐单客消费达 $1,800 至 $7,200 美元区间',
+        '涵盖海鲜餐饮、南洋珍珠、康养水疗的全闭环商户高频消费',
+        '依托 H Pass 权益体系形成极高复游率与品牌忠诚度'
       ]
     }
   ];
@@ -89,13 +87,13 @@ export const WhySabahSection: React.FC = () => {
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
             <Compass className="w-3.5 h-3.5" />
-            <span>Strategic Location & Positioning</span>
+            <span>战略区位与核心优势</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            Why Kota Kinabalu & Sabah?
+            为什么选择沙巴与亚庇作为落地枢纽？
           </h2>
           <p className="text-sm sm:text-base text-slate-300">
-            The ultimate regional landing zone: accessible within a 4-hour flight radius from Asia’s richest financial capitals, boasting world-class infrastructure and pristine eco-luxury assets.
+            地处亚洲几何中心，4小时飞行半径覆盖亚太最富庶金融都市，兼具世界级自然奇观、顶尖会奖设施与极佳营商环境。
           </p>
         </div>
 
@@ -107,12 +105,12 @@ export const WhySabahSection: React.FC = () => {
                 <Plane className="w-5 h-5 text-amber-400" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-white">Direct Aviation Gateway (KKIA - BKI)</h3>
-                <p className="text-xs text-slate-400">Kota Kinabalu International Airport: Malaysia’s 2nd Busiest International Hub</p>
+                <h3 className="text-base font-bold text-white">直达空中航线枢纽 (KKIA - 亚庇国际机场)</h3>
+                <p className="text-xs text-slate-400">全马第二繁忙的国际航空港，直连亚太各大中心城市</p>
               </div>
             </div>
             <div className="text-xs text-amber-400 font-semibold bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20 self-start md:self-auto">
-              Average 4-Hour Flight Time for 85% of Hermes Asian Members
+              平均 4 小时航程直达 85% 的爱马仕亚洲核心会员客群
             </div>
           </div>
 
@@ -132,7 +130,7 @@ export const WhySabahSection: React.FC = () => {
           {/* Pillar Selector List */}
           <div className="lg:col-span-5 space-y-3">
             <span className="text-xs uppercase tracking-wider font-bold text-slate-400 px-2 block">
-              Core Strategic Pillars
+              四大核心战略支柱
             </span>
             {pillars.map((p, idx) => (
               <div
@@ -153,7 +151,7 @@ export const WhySabahSection: React.FC = () => {
                       <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400">
                         {p.badge}
                       </span>
-                      {activePillar === idx && <span className="text-amber-400 text-xs">● Active</span>}
+                      {activePillar === idx && <span className="text-amber-400 text-xs">● 正在查看</span>}
                     </div>
                     <h4 className="text-sm font-bold text-white mt-0.5">{p.title}</h4>
                     <p className="text-xs text-slate-400 mt-1 line-clamp-1">{p.subtitle}</p>

@@ -2,43 +2,38 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { MERCHANT_PARTNERS } from '../../data/ecosystemData';
 import {
-  Store,
   MapPin,
   Star,
-  Sparkles,
-  QrCode,
-  CheckCircle2,
-  Tag,
-  Filter
+  QrCode
 } from 'lucide-react';
 import { MerchantPartner } from '../../types';
 
 export const MemberMerchants: React.FC = () => {
   const { setSelectedMerchantForModal, currentMember, redeemedPerks } = useApp();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [selectedDistrict, setSelectedDistrict] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('全部');
+  const [selectedDistrict, setSelectedDistrict] = useState<string>('全部');
 
   const categories = [
-    'All',
-    'Hotels & Resorts',
-    'Fine Dining & Seafood',
-    'Wellness & Spa',
-    'Tours & Marine',
-    'Retail & Artisanal',
-    'VIP Transport'
+    '全部',
+    '奢华度假酒店',
+    '海鲜与高端餐饮',
+    '康养与水疗',
+    '海岛与定制游',
+    '珍珠与非遗特产',
+    '尊享专车礼宾'
   ];
 
   const districts = [
-    'All',
-    'Kota Kinabalu Waterfront',
-    'Tanjung Aru & Sutera',
-    'Gaya Island & Marine Park',
-    'Kundasang Highlands'
+    '全部',
+    '亚庇海滨核心区 (KK Waterfront)',
+    '丹绒亚路与丝绸港 (Tanjung Aru)',
+    '加雅岛国家海洋公园 (Gaya Island)',
+    '神山高地 (Kundasang)'
   ];
 
   const filteredMerchants = MERCHANT_PARTNERS.filter(m => {
-    const matchCat = selectedCategory === 'All' || m.category === selectedCategory;
-    const matchDist = selectedDistrict === 'All' || m.district === selectedDistrict;
+    const matchCat = selectedCategory === '全部' || m.category === selectedCategory;
+    const matchDist = selectedDistrict === '全部' || m.district === selectedDistrict;
     return matchCat && matchDist;
   });
 
@@ -46,9 +41,9 @@ export const MemberMerchants: React.FC = () => {
     <div className="space-y-8 animate-fadeIn">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-serif font-bold text-white">Merchant Privileges & H Pass Benefits</h2>
+        <h2 className="text-2xl font-serif font-bold text-white">沙巴商户网络与 H Pass 专属特权</h2>
         <p className="text-xs text-slate-400 mt-1">
-          Present your digital H Pass to unlock tier discounts (up to 25% OFF) and earn H-Credits at 150+ partner venues across Sabah.
+          在沙巴150+家严选签约商户现场出示 H Pass 动态通票，立享对应会籍折扣（最高75折）并实时累积 H-Credits 积分。
         </p>
       </div>
 
@@ -73,7 +68,7 @@ export const MemberMerchants: React.FC = () => {
 
         {/* District Filters */}
         <div className="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none">
-          <span className="text-[11px] text-slate-500 font-semibold px-1">Location:</span>
+          <span className="text-[11px] text-slate-500 font-semibold px-1">商圈区域:</span>
           {districts.map(dist => (
             <button
               key={dist}
@@ -110,11 +105,11 @@ export const MemberMerchants: React.FC = () => {
 
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
                     <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/90 text-emerald-400 border border-emerald-500/30">
-                      {m.category.split('&')[0]}
+                      {m.category}
                     </span>
                     <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/90 text-amber-300 border border-amber-500/30 flex items-center space-x-1">
                       <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                      <span>{m.rating}</span>
+                      <span>{m.rating} 分</span>
                     </span>
                   </div>
 
@@ -137,13 +132,13 @@ export const MemberMerchants: React.FC = () => {
                   {/* Active Tier Privilege Box */}
                   <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs space-y-1">
                     <div className="flex items-center justify-between text-amber-300 font-semibold text-[11px]">
-                      <span>{currentMember.tier} Privilege</span>
-                      <span className="text-emerald-400 font-bold">Up to {m.discountPercentage}% OFF</span>
+                      <span>{currentMember.tier.split(' ')[0]} 专享礼遇</span>
+                      <span className="text-emerald-400 font-bold">享 {m.discountPercentage}% 优惠</span>
                     </div>
                     <p className="text-[11px] text-slate-300">
-                      {currentMember.tier === 'Black VIP'
+                      {currentMember.tier.includes('黑金')
                         ? m.tierPrivilege.black
-                        : currentMember.tier === 'Platinum'
+                        : currentMember.tier.includes('白金')
                         ? m.tierPrivilege.platinum
                         : m.tierPrivilege.gold}
                     </p>
@@ -164,7 +159,7 @@ export const MemberMerchants: React.FC = () => {
                   }`}
                 >
                   <QrCode className="w-3.5 h-3.5" />
-                  <span>{isRedeemed ? 'Pass Activated (Show QR)' : 'Activate Privilege & QR'}</span>
+                  <span>{isRedeemed ? '特权已激活 (展示核销二维码)' : '激活商户特权 & 生成二维码'}</span>
                 </button>
               </div>
             </div>

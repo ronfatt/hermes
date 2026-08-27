@@ -4,23 +4,19 @@ import {
   Ticket,
   Calendar,
   MapPin,
-  Users,
-  Sparkles,
-  CheckCircle2,
-  Lock,
-  ArrowRight
+  Users
 } from 'lucide-react';
 import { VIPEvent } from '../../types';
 
 export const MemberEvents: React.FC = () => {
-  const { eventsList, rsvpEvent, currentMember, formatCurrency } = useApp();
+  const { eventsList, rsvpEvent, formatCurrency } = useApp();
 
   return (
     <div className="space-y-8 animate-fadeIn">
       <div>
-        <h2 className="text-2xl font-serif font-bold text-white">Sabah VIP Events & Annual Summits</h2>
+        <h2 className="text-2xl font-serif font-bold text-white">沙巴 VIP 年度峰会与名流晚宴</h2>
         <p className="text-xs text-slate-400 mt-1">
-          Exclusive invitations to closed-door leadership summits, private yacht soirees, and high-altitude gastronomy experiences in Sabah.
+          直通爱马仕沙巴全球年度峰会、闭门领袖圆桌、私人游艇落日酒会及海拔两千米星空主厨餐桌。
         </p>
       </div>
 
@@ -40,7 +36,7 @@ export const MemberEvents: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
                 <div className="absolute top-3 left-3">
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-slate-950 uppercase">
-                    Tier: {ev.accessTier}+
+                    准入级别: {ev.accessTier}+
                   </span>
                 </div>
               </div>
@@ -63,9 +59,9 @@ export const MemberEvents: React.FC = () => {
                 </div>
 
                 <div className="space-y-3 pt-2 border-t border-slate-800">
-                  <div className="flex items-center space-x-2 text-xs text-slate-400">
+                  <div className="flex items-center space-x-1.5 text-xs text-slate-400">
                     <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{ev.location}</span>
+                    <span className="truncate">{ev.location}</span>
                   </div>
 
                   {/* Capacity Bar */}
@@ -73,9 +69,9 @@ export const MemberEvents: React.FC = () => {
                     <div className="flex items-center justify-between text-[11px]">
                       <span className="text-slate-400 flex items-center space-x-1">
                         <Users className="w-3 h-3 text-amber-400" />
-                        <span>Confirmed Attendees: {ev.rsvpCount} / {ev.capacity}</span>
+                        <span>已确认受邀出席席位: {ev.rsvpCount} / {ev.capacity} 席</span>
                       </span>
-                      <span className="text-amber-400 font-bold">{capacityPercent}% Capacity</span>
+                      <span className="text-amber-400 font-bold">{capacityPercent}% 已锁定</span>
                     </div>
                     <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
                       <div
@@ -90,9 +86,9 @@ export const MemberEvents: React.FC = () => {
               {/* RSVP Action on Right */}
               <div className="w-full lg:w-60 bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between space-y-4 shrink-0">
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Member Delegate Pass</span>
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-medium">会员代表席位费</span>
                   <span className="text-xl font-serif font-bold text-amber-400">{formatCurrency(ev.priceUSD)}</span>
-                  <p className="text-[10px] text-emerald-400 mt-1">Includes VIP reception & gala seat</p>
+                  <p className="text-[10px] text-emerald-400 mt-1">包含峰会全通票、VIP酒会及晚宴专席</p>
                 </div>
 
                 <button
@@ -105,7 +101,7 @@ export const MemberEvents: React.FC = () => {
                   }`}
                 >
                   <Ticket className="w-4 h-4" />
-                  <span>{isFull ? 'Event Sold Out' : '1-Click RSVP'}</span>
+                  <span>{isFull ? '席位已全部售罄' : '一键锁定 VIP 席位'}</span>
                 </button>
               </div>
             </div>

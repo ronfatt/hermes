@@ -6,28 +6,25 @@ import {
   MapPin,
   Star,
   Sparkles,
-  ArrowRight,
-  ShieldCheck,
-  Tag,
-  Gift
+  ArrowRight
 } from 'lucide-react';
 import { MerchantPartner } from '../../types';
 
 export const MerchantsSection: React.FC = () => {
   const { setSelectedMerchantForModal } = useApp();
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('全部');
 
   const categories = [
-    'All',
-    'Hotels & Resorts',
-    'Fine Dining & Seafood',
-    'Wellness & Spa',
-    'Tours & Marine',
-    'Retail & Artisanal',
-    'VIP Transport'
+    '全部',
+    '奢华度假酒店',
+    '海鲜与高端餐饮',
+    '康养与水疗',
+    '海岛与定制游',
+    '珍珠与非遗特产',
+    '尊享专车礼宾'
   ];
 
-  const filteredMerchants = selectedCategory === 'All'
+  const filteredMerchants = selectedCategory === '全部'
     ? MERCHANT_PARTNERS
     : MERCHANT_PARTNERS.filter(m => m.category === selectedCategory);
 
@@ -38,13 +35,13 @@ export const MerchantsSection: React.FC = () => {
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             <Store className="w-3.5 h-3.5" />
-            <span>High-Yield Merchant Ecosystem</span>
+            <span>沙巴高净值联盟商户生态</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            Sabah Partner Network
+            沙巴签约商户网络 (Partner Network)
           </h2>
           <p className="text-sm sm:text-base text-slate-300">
-            A curated coalition of premier Sabah hospitality, dining, seafood, wellness, pearl craft, and transport brands linked through the Hermes H Pass digital credential.
+            由沙巴顶尖奢华酒店、海鲜殿堂、独立岛屿水疗、南洋金珠工坊与专车直升机机队组成的紧密商业联盟，统一接入爱马仕 H Pass 权益通票。
           </p>
         </div>
 
@@ -88,7 +85,7 @@ export const MerchantsSection: React.FC = () => {
                     </span>
                     <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/90 text-amber-300 border border-amber-500/30 flex items-center space-x-1">
                       <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                      <span>{merchant.rating}</span>
+                      <span>{merchant.rating} 分</span>
                     </span>
                   </div>
 
@@ -115,9 +112,9 @@ export const MerchantsSection: React.FC = () => {
                     <div className="flex items-center justify-between text-amber-300 font-semibold text-[11px]">
                       <span className="flex items-center space-x-1">
                         <Sparkles className="w-3 h-3 text-amber-400" />
-                        <span>H Pass Privilege</span>
+                        <span>H Pass 会员特权</span>
                       </span>
-                      <span className="text-emerald-400">Up to {merchant.discountPercentage}% OFF</span>
+                      <span className="text-emerald-400 font-bold">高达 {merchant.discountPercentage}% 优惠</span>
                     </div>
                     <p className="text-[11px] text-slate-300 line-clamp-1">{merchant.tierPrivilege.platinum}</p>
                   </div>
@@ -125,9 +122,9 @@ export const MerchantsSection: React.FC = () => {
               </div>
 
               <div className="p-5 pt-0 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-[10px] text-slate-500">Click to view QR & privileges</span>
+                <span className="text-[10px] text-slate-500">点击查看不同卡级特权与核销二维码</span>
                 <span className="text-amber-400 font-bold group-hover:translate-x-1 transition-transform flex items-center space-x-1">
-                  <span>View Details</span>
+                  <span>查看详情</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>

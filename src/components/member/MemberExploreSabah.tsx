@@ -1,78 +1,71 @@
 import React, { useState } from 'react';
-import { useApp } from '../../context/AppContext';
 import {
-  MapPin,
-  Compass,
   Star,
   Sparkles,
   Waves,
   Trees,
-  Coffee,
   Fish,
-  Utensils,
-  Gem,
-  ExternalLink
+  Gem
 } from 'lucide-react';
 
 export const MemberExploreSabah: React.FC = () => {
-  const { setSelectedMerchantForModal } = useApp();
   const [selectedHotspot, setSelectedHotspot] = useState<number>(0);
 
   const hotspots = [
     {
-      name: 'Kota Kinabalu Waterfront & Jesselton Marina',
-      category: 'Coastal Hub & Yachting',
+      name: '亚庇海滨大道与哲斯顿港游艇码头 (KK Waterfront & Marina)',
+      category: '海岸生活方式与游艇枢纽',
       icon: <Waves className="w-4 h-4 text-cyan-400" />,
-      district: 'KK Central Waterfront',
+      district: '亚庇海滨核心区 (KK Waterfront)',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
-      description: 'The energetic epicenter of Sabah luxury lifestyle. Home to premier seafood pavilions, the historic Jesselton Point yacht marina, and sunset champagne lounges.',
-      privileges: 'VIP Yacht boarding privileges, 15% discount at waterfront seafood partners.',
+      description: '沙巴奢华海滨生活方式的绝对核心。汇集了顶级活海鲜酒楼、历史悠久的哲斯顿港私人游艇码头及落日香槟酒吧街。',
+      privileges: '尊享游艇优先登船礼遇，大茄来等海鲜餐厅享88折并赠送招牌老虎虾。',
       coordinates: '5.9804° N, 116.0735° E',
-      highlights: ['Jesselton Point Marina', 'Welcome Seafood Pavilion', 'Waterfront Boardwalk Night Life']
+      highlights: ['哲斯顿港码头 (Jesselton Point)', '大茄来海鲜总店', '海滨木栈道落日酒吧']
     },
     {
-      name: 'Tanjung Aru & Sutera Harbour Peninsula',
-      category: '5-Star Hospitality & Sunsets',
+      name: '丹绒亚路与丝绸港半岛 (Tanjung Aru & Sutera Peninsula)',
+      category: '五星级综合度假与世界级日落',
       icon: <Star className="w-4 h-4 text-amber-400" />,
-      district: 'Tanjung Aru Coastal Strip',
+      district: '丹绒亚路海岸线',
       image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80',
-      description: 'Globally renowned for producing one of the world’s top 3 most breathtaking sunsets. Anchored by the 27-hole Graham Marsh golf course and private marina slips.',
-      privileges: 'Complimentary Sunset Bar reservations, 20% Spa privileges at Chi Spa.',
+      description: '世界三大最美日落观测胜地，坐拥27洞锦标赛高尔夫球场、香格里拉落日酒吧及独岛“气”水疗中心。',
+      privileges: '香格里拉 Sunset Bar 保证第一排临海观景席，丝绸港湾高尔夫与CHI水疗8折特权。',
       coordinates: '5.9528° N, 116.0461° E',
-      highlights: ['Shangri-La Sunset Bar', 'Sutera Marina 27-Hole Golf', 'Tanjung Aru Beach Park']
+      highlights: ['香格里拉 Sunset Bar', '丝绸港27洞高尔夫', '丹绒亚路海滩落日公园']
     },
     {
-      name: 'Gaya Island & Tunku Abdul Rahman Coral Triangle',
-      category: 'Island Eco-Sanctuary',
+      name: '加雅岛与东姑阿都拉曼珊瑚海洋公园 (Gaya Island Marine Park)',
+      category: '海岛生态秘境与水上独栋别墅',
       icon: <Fish className="w-4 h-4 text-emerald-400" />,
-      district: 'Tunku Abdul Rahman Marine Park',
+      district: '国家海洋公园核心海域',
       image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&auto=format&fit=crop&q=80',
-      description: 'A 15-minute speed charter from KK brings you into pristine rainforest-cloaked islands and protected marine sanctuaries teeming with sea turtles and vibrant coral reefs.',
-      privileges: 'Private marine biologist guided reef safari, private beach pavilion buyout.',
+      description: '距市区仅15分钟快艇航程，即可置身于雨林环抱的清澈珊瑚海域，拥有私家海洋生物保育中心与水上总统套房。',
+      privileges: '海洋学者一对一私享浮潜导览，私家海滩独立凉亭包场特权。',
       coordinates: '6.0125° N, 116.0310° E',
-      highlights: ['YTL Gaya Island Resort', 'Sapi & Manukan Marine Reefs', 'Coral Conservation Pavilion']
+      highlights: ['YTL 加雅岛顶级生态度假村', '沙比岛与马奴干岛珊瑚区', '海洋生物保育中心']
     },
     {
-      name: 'Mount Kinabalu & Kundasang Valley Highlands',
-      category: 'UNESCO World Heritage Alpine',
+      name: '神山国家公园与昆达山高山河谷 (Mount Kinabalu & Kundasang)',
+      category: '联合国世界遗产与高山避暑',
       icon: <Trees className="w-4 h-4 text-purple-400" />,
-      district: 'Ranau / Kundasang Highlands',
+      district: '兰瑙 / 昆达山高地',
       image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&auto=format&fit=crop&q=80',
-      description: 'Towering at 4,095 meters, Mount Kinabalu’s sacred granite spires rise above the clouds. Enjoy crisp mountain air, high-altitude botanical chalets, and organic agritourism.',
-      privileges: 'Helicopter peak fly-over access, private botanical masterclass with lead botanists.',
+      description: '巍峨海拔4,095米的神山花岗岩峰顶直插云霄。常年18°C凉爽气候，配备私密高山木屋、有机牧场与树冠吊桥。',
+      privileges: '直升机神山峰顶鸟瞰巡航通道，植物学首席专家私家兰花微观探秘。',
       coordinates: '6.0753° N, 116.5584° E',
-      highlights: ['Kinabalu UNESCO World Heritage Park', 'Kundasang Highland Valleys', 'Desa Dairy Alpine Pastures']
+      highlights: ['京那巴鲁世界自然遗产公园', '昆达山高山有机农业带', '德萨高山生态牧场']
     },
     {
-      name: 'Gaya Street & Artisanal Pearl Ateliers',
-      category: 'Heritage & High Jewelry',
+      name: '加雅街百年历史街区与南洋珍珠工坊 (Gaya Street Heritage)',
+      category: '历史非遗与南洋金珠高定',
       icon: <Gem className="w-4 h-4 text-pink-400" />,
-      district: 'Heritage Historic Quarter',
+      district: '亚庇老城区历史街区',
       image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&auto=format&fit=crop&q=80',
-      description: 'The historic soul of Kota Kinabalu featuring colonial architecture, third-wave specialty Sabah coffee roasters, and private South Sea pearl ateliers.',
-      privileges: 'Private master jeweler fitting, certified Sabah golden pearl provenance certificates.',
+      description: '亚庇人文历史发源地，拥有百年南洋骑楼、沙巴单品精品咖啡馆及沙巴权威天然南洋金珠定制工坊。',
+      privileges: '首席珠宝大师一对一量身手工镶嵌，天然金珠权威鉴定证书保障。',
       coordinates: '5.9830° N, 116.0772° E',
-      highlights: ['Sabah South Sea Pearl Heritage', 'Historic Gaya Street Sunday Market', 'Artisan Coffee Roasteries']
+      highlights: ['沙巴南洋珍珠非遗旗舰店', '加雅街周日历史市集', '丹南手冲精品咖啡馆']
     }
   ];
 
@@ -80,9 +73,9 @@ export const MemberExploreSabah: React.FC = () => {
     <div className="space-y-8 animate-fadeIn">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-serif font-bold text-white">Explore Curated Sabah Hotspots</h2>
+        <h2 className="text-2xl font-serif font-bold text-white">探索沙巴专属目的地指南</h2>
         <p className="text-xs text-slate-400 mt-1">
-          Interactive destination map and insider guides for Hermes VIP members.
+          为爱马仕会员量身定制的亚庇与周边地标地图，深度整合商户权益与私密体验。
         </p>
       </div>
 
@@ -107,7 +100,7 @@ export const MemberExploreSabah: React.FC = () => {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">{spot.category}</span>
-                    {selectedHotspot === idx && <span className="text-amber-400 text-xs">● Active</span>}
+                    {selectedHotspot === idx && <span className="text-amber-400 text-xs">● 正在查看</span>}
                   </div>
                   <h4 className="text-sm font-bold text-white truncate mt-0.5">{spot.name}</h4>
                   <p className="text-xs text-slate-400 mt-0.5">{spot.district}</p>
@@ -131,7 +124,7 @@ export const MemberExploreSabah: React.FC = () => {
                   
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-950/80 text-amber-300 border border-amber-500/30">
-                      {spot.coordinates}
+                      地理坐标: {spot.coordinates}
                     </span>
                   </div>
 
@@ -153,14 +146,14 @@ export const MemberExploreSabah: React.FC = () => {
                   <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs space-y-1">
                     <span className="font-bold text-amber-300 flex items-center space-x-1.5">
                       <Sparkles className="w-3.5 h-3.5" />
-                      <span>Hermes Member Exclusive Benefit:</span>
+                      <span>爱马仕会员专属落地权益:</span>
                     </span>
                     <p className="text-slate-200">{spot.privileges}</p>
                   </div>
 
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-slate-400 font-bold block mb-2">
-                      Featured Destination Anchors:
+                      核心打卡与体验地标:
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {spot.highlights.map((h, i) => (

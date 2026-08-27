@@ -10,7 +10,6 @@ import {
 } from '../types';
 import {
   INITIAL_MEMBERS,
-  FLAGSHIP_PACKAGES,
   MERCHANT_PARTNERS,
   INITIAL_BOOKINGS,
   VIP_EVENTS
@@ -70,10 +69,10 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 const CURRENCY_RATES: Record<Currency, { rate: number; symbol: string }> = {
   USD: { rate: 1, symbol: '$' },
+  CNY: { rate: 7.24, symbol: '¥' },
   MYR: { rate: 4.65, symbol: 'RM ' },
   SGD: { rate: 1.34, symbol: 'S$' },
-  HKD: { rate: 7.82, symbol: 'HK$' },
-  CNY: { rate: 7.24, symbol: '¥' }
+  HKD: { rate: 7.82, symbol: 'HK$' }
 };
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -117,7 +116,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const setCurrentMember = (m: MemberProfile) => {
     sound.playClick();
     setCurrentMemberState(m);
-    showToast(`Switched Profile`, `Active session: ${m.name} (${m.tier})`, 'gold');
+    showToast(`已切换演示会员画像`, `当前会籍：${m.name}（${m.tier}）`, 'gold');
   };
 
   const formatCurrency = (amountUSD: number): string => {
@@ -161,7 +160,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // update current member points and trips
     setMembersList(prev => prev.map(m => {
       if (m.id === currentMember.id) {
-        const updated = {
+        const updated: MemberProfile = {
           ...m,
           totalTrips: m.totalTrips + 1,
           totalSpentUSD: m.totalSpentUSD + bookingData.amountUSD,
@@ -169,7 +168,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           nextTrip: {
             packageName: bookingData.packageName,
             date: bookingData.travelDate,
-            status: 'VIP Chauffeur & Suite Reserved',
+            status: '已锁定义务接驾与总统海景别墅',
             bookingRef: newRef
           }
         };
@@ -179,13 +178,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       return m;
     }));
 
-    showToast('Package Reservation Confirmed!', `Booking Ref ${newRef} assigned. Concierge team notified.`, 'gold');
+    showToast('沙巴奢华文旅套餐已成功锁定！', `预订编号 [${newRef}] 已生成，沙巴专属管家正在对接。`, 'gold');
   };
 
   const updateBookingStatus = (id: string, status: BookingRecord['status']) => {
     sound.playClick();
     setBookingsList(prev => prev.map(b => b.id === id ? { ...b, status } : b));
-    showToast('Booking Pipeline Updated', `Status changed to ${status}`, 'info');
+    showToast('履约调度状态已更新', `订单状态已切换为【${status}】`, 'info');
   };
 
   const redeemPerk = (merchantId: string) => {
@@ -196,7 +195,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // reward member with points
     setMembersList(prev => prev.map(m => {
       if (m.id === currentMember.id) {
-        const updated = {
+        const updated: MemberProfile = {
           ...m,
           points: m.points + 250
         };
@@ -207,7 +206,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }));
 
     const merchant = merchantsList.find(m => m.id === merchantId);
-    showToast('Privilege Activated!', `${merchant?.name || 'Partner'} discount & QR voucher generated (+250 H-Credits)`, 'gold');
+    showToast('商户特权激活成功！', `已生成【${merchant?.name || '签约商户'}】现场核销二维码（+250 积分奖励）`, 'gold');
   };
 
   const rsvpEvent = (eventId: string) => {
@@ -218,14 +217,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         return {
           ...ev,
           rsvpCount: Math.min(ev.capacity, ev.rsvpCount + 1),
-          status: ev.rsvpCount + 1 >= ev.capacity ? 'Almost Full' : ev.status
+          status: ev.rsvpCount + 1 >= ev.capacity ? '席位即将告罄' : ev.status
         };
       }
       return ev;
     }));
 
     const event = eventsList.find(e => e.id === eventId);
-    showToast('VIP Event RSVP Confirmed!', `Digital VIP pass generated for ${event?.title}`, 'gold');
+    showToast('VIP峰会席位已确认！', `已为您生成【${event?.title}】电子入场贵宾票凭证`, 'gold');
   };
 
   return (

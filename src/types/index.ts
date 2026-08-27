@@ -2,7 +2,7 @@ export type AppMode = 'presentation' | 'member' | 'admin';
 
 export type Currency = 'USD' | 'MYR' | 'SGD' | 'HKD' | 'CNY';
 
-export type MemberTier = 'Black VIP' | 'Platinum' | 'Gold';
+export type MemberTier = '黑金VIP卡 (Black VIP)' | '白金卡 (Platinum)' | '金卡 (Gold)';
 
 export interface MemberProfile {
   id: string;
@@ -15,7 +15,7 @@ export interface MemberProfile {
   creditsMYR: number;
   totalTrips: number;
   totalSpentUSD: number;
-  status: 'Active' | 'VIP In-Transit' | 'Arriving Soon';
+  status: '活跃会员' | '沙巴在途VIP' | '即将抵达';
   nextTrip?: {
     packageName: string;
     date: string;
@@ -32,7 +32,7 @@ export interface FlagshipPackage {
   duration: string;
   priceUSD: number;
   priceMYR: number;
-  tierRequirement: MemberTier;
+  tierRequirement: string;
   heroImage: string;
   gallery: string[];
   overview: string;
@@ -52,9 +52,9 @@ export interface FlagshipPackage {
 export interface MerchantPartner {
   id: string;
   name: string;
-  category: 'Hotels & Resorts' | 'Fine Dining & Seafood' | 'Wellness & Spa' | 'Tours & Marine' | 'Retail & Artisanal' | 'VIP Transport' | 'Events & Culture';
+  category: '奢华度假酒店' | '海鲜与高端餐饮' | '康养与水疗' | '海岛与定制游' | '珍珠与非遗特产' | '尊享专车礼宾' | '文化与峰会活动';
   location: string;
-  district: 'Kota Kinabalu Waterfront' | 'Tanjung Aru & Sutera' | 'Gaya Island & Marine Park' | 'Kundasang Highlands' | 'Semporna / East Coast';
+  district: '亚庇海滨核心区 (KK Waterfront)' | '丹绒亚路与丝绸港 (Tanjung Aru)' | '加雅岛国家海洋公园 (Gaya Island)' | '神山高地 (Kundasang)' | '仙本那 / 东海岸 (Semporna)';
   image: string;
   rating: number;
   description: string;
@@ -65,7 +65,7 @@ export interface MerchantPartner {
   };
   discountPercentage: number;
   hCreditsEarnRate: string;
-  campaignStatus: 'Active Exclusive' | 'Seasonal VIP' | 'Year-Round Partner';
+  campaignStatus: '核心独家签约' | '尊享VIP伙伴' | '年度合作商户';
   annualCampaignFeeUSD: number;
   commissionRate: number;
 }
@@ -83,7 +83,7 @@ export interface BookingRecord {
   duration: string;
   guests: number;
   amountUSD: number;
-  status: 'Confirmed' | 'In Progress' | 'Completed' | 'Pending Concierge';
+  status: '已确认锁定' | '进行中/在途' | '已圆满完成' | '专属管家对接中';
   assignedDriver?: string;
   hotelBooked?: string;
   createdAt: string;
@@ -99,9 +99,9 @@ export interface VIPEvent {
   rsvpCount: number;
   image: string;
   description: string;
-  accessTier: MemberTier;
+  accessTier: string;
   priceUSD: number;
-  status: 'Open for RSVP' | 'Almost Full' | 'Exclusive Invite';
+  status: '开放席位预约' | '席位即将告罄' | '特邀专属闭门';
 }
 
 export interface RevenueStream {
@@ -119,7 +119,7 @@ export interface RoadmapPhase {
   phase: string;
   title: string;
   timeline: string;
-  status: 'In Progress' | 'Scheduled' | 'Future Vision';
+  status: '推进执行中' | '已排期部署' | '远景生态规划';
   milestones: string[];
   kpis: {
     members: string;

@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import {
-  Users,
   Search,
-  Filter,
-  Sparkles,
-  MapPin,
-  Clock,
-  ShieldCheck,
-  CheckCircle2,
   ExternalLink
 } from 'lucide-react';
 import { MemberProfile } from '../../types';
@@ -16,24 +9,23 @@ import { MemberProfile } from '../../types';
 export const AdminMembers: React.FC = () => {
   const { membersList, formatCurrency, setCurrentMember, setCurrentMode } = useApp();
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [selectedTier, setSelectedTier] = useState<string>('All');
+  const [selectedTier, setSelectedTier] = useState<string>('全部');
 
   const filteredMembers = membersList.filter(m => {
     const matchSearch = m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       m.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
       m.memberNo.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchTier = selectedTier === 'All' || m.tier === selectedTier;
+    const matchTier = selectedTier === '全部' || m.tier.includes(selectedTier);
     return matchSearch && matchTier;
   });
 
   const getTierBadge = (tier: string) => {
-    switch (tier) {
-      case 'Black VIP':
-        return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
-      case 'Platinum':
-        return 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
-      default:
-        return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+    if (tier.includes('黑金')) {
+      return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+    } else if (tier.includes('白金')) {
+      return 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40';
+    } else {
+      return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
     }
   };
 
@@ -42,9 +34,9 @@ export const AdminMembers: React.FC = () => {
       {/* Header & Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-white">Hermes Member CRM</h2>
+          <h2 className="text-2xl font-serif font-bold text-white">爱马仕全球会员 CRM 档案库</h2>
           <p className="text-xs text-slate-400 mt-1">
-            Active and arriving global Hermes members visiting Sabah, travel history, and tier status.
+            已注册沙巴生态通票的全球高净值会员档案、历史在沙巴总消费额及动态行程状态。
           </p>
         </div>
 
@@ -54,7 +46,7 @@ export const AdminMembers: React.FC = () => {
             <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search member, country, ID..."
+              placeholder="搜索会员姓名、卡号、国籍..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               className="pl-8 pr-4 py-1.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-200 focus:border-emerald-500 focus:outline-none w-56"
@@ -63,7 +55,7 @@ export const AdminMembers: React.FC = () => {
 
           {/* Tier filter */}
           <div className="flex items-center space-x-1 bg-slate-900 p-1 rounded-xl border border-slate-700">
-            {['All', 'Black VIP', 'Platinum', 'Gold'].map(t => (
+            {['全部', '黑金', '白金', '金卡'].map(t => (
               <button
                 key={t}
                 onClick={() => setSelectedTier(t)}
@@ -86,13 +78,13 @@ export const AdminMembers: React.FC = () => {
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-950/80 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800 font-semibold">
               <tr>
-                <th className="py-3.5 px-4">Member Name & ID</th>
-                <th className="py-3.5 px-4">Tier Status</th>
-                <th className="py-3.5 px-4">Country of Origin</th>
-                <th className="py-3.5 px-4">Total Sabah Spend</th>
-                <th className="py-3.5 px-4">H-Reward Points</th>
-                <th className="py-3.5 px-4">Live Trip Status</th>
-                <th className="py-3.5 px-4 text-right">Impersonate Persona</th>
+                <th className="py-3.5 px-4">会员姓名与专属卡号</th>
+                <th className="py-3.5 px-4">会籍级别</th>
+                <th className="py-3.5 px-4">常住地/国籍</th>
+                <th className="py-3.5 px-4">在沙巴历史总消费</th>
+                <th className="py-3.5 px-4">当前 H-Credits 积分</th>
+                <th className="py-3.5 px-4">沙巴行程动态</th>
+                <th className="py-3.5 px-4 text-right">模拟该会员视角</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 text-slate-300">
@@ -120,11 +112,11 @@ export const AdminMembers: React.FC = () => {
 
                   <td className="py-3.5 px-4">
                     <span className="font-serif font-bold text-amber-400">{formatCurrency(m.totalSpentUSD)}</span>
-                    <span className="text-[10px] text-slate-500 block">{m.totalTrips} Trips to Sabah</span>
+                    <span className="text-[10px] text-slate-500 block">已抵港 {m.totalTrips} 次</span>
                   </td>
 
                   <td className="py-3.5 px-4">
-                    <span className="font-bold text-slate-200">{m.points.toLocaleString()} pts</span>
+                    <span className="font-bold text-slate-200">{m.points.toLocaleString()} 分</span>
                   </td>
 
                   <td className="py-3.5 px-4">
@@ -141,7 +133,7 @@ export const AdminMembers: React.FC = () => {
                       }}
                       className="px-3 py-1.5 bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-slate-200 rounded-lg text-xs font-semibold transition-all border border-slate-700 hover:border-transparent inline-flex items-center space-x-1"
                     >
-                      <span>Simulate Persona</span>
+                      <span>以该身份体验</span>
                       <ExternalLink className="w-3 h-3" />
                     </button>
                   </td>

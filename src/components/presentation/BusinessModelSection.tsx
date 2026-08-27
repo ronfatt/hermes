@@ -8,12 +8,8 @@ import {
   Store,
   Ticket,
   ShoppingBag,
-  TrendingUp,
   Sliders,
-  DollarSign,
-  PieChart,
-  CheckCircle2,
-  Sparkles
+  DollarSign
 } from 'lucide-react';
 
 export const BusinessModelSection: React.FC = () => {
@@ -28,12 +24,12 @@ export const BusinessModelSection: React.FC = () => {
   const totalEcosystemGMV = annualMembers * avgSpendPerTrip;
   
   // 6 Revenue Stream Breakdowns
-  const tourMarginAmount = totalEcosystemGMV * 0.45 * 0.25; // 45% of GMV in packages, 25% margin
-  const hotelCommissionAmount = totalEcosystemGMV * 0.25 * 0.15; // 25% of GMV in hotels, 15% comm
-  const transportMarginAmount = totalEcosystemGMV * 0.12 * 0.28; // 12% in transport, 28% margin
-  const merchantFeeAmount = merchantCount * 3800; // Annual listing & campaign fees
-  const eventRevenueAmount = annualMembers * 0.15 * 650 * 0.40; // 15% members attend events @ $650, 40% margin
-  const marketplaceCommissionAmount = totalEcosystemGMV * 0.18 * 0.12; // 18% in marketplace goods, 12% comm
+  const tourMarginAmount = totalEcosystemGMV * 0.45 * 0.25; // 45% GMV 来自套餐，25% 毛利
+  const hotelCommissionAmount = totalEcosystemGMV * 0.25 * 0.15; // 25% GMV 来自酒店，15% 佣金
+  const transportMarginAmount = totalEcosystemGMV * 0.12 * 0.28; // 12% 来自专车直升机，28% 毛利
+  const merchantFeeAmount = merchantCount * 3800; // 联盟商户年度战略入驻与营销费
+  const eventRevenueAmount = annualMembers * 0.15 * 650 * 0.40; // 15% 会员参与峰会，客单$650，40% 毛利
+  const marketplaceCommissionAmount = totalEcosystemGMV * 0.18 * 0.12; // 18% 特产与珍珠，12% 抽佣
 
   const totalOperatorGrossRevenue =
     tourMarginAmount +
@@ -64,13 +60,13 @@ export const BusinessModelSection: React.FC = () => {
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
             <DollarSign className="w-3.5 h-3.5" />
-            <span>Monetization Architecture</span>
+            <span>商业化与盈利变现架构</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            Business Model & Revenue Engines
+            商业盈利模式 (6大核心变现引擎)
           </h2>
           <p className="text-sm sm:text-base text-slate-300">
-            A resilient multi-stream revenue model capturing high margins across luxury travel packages, wholesale hotel margins, merchant listing fees, and ecosystem commerce.
+            具备强大韧性与高抗风险能力的多元化变现矩阵，全方位捕获高端定制游套餐、酒店批发利差、商户营销费及特产交易佣金。
           </p>
         </div>
 
@@ -90,7 +86,7 @@ export const BusinessModelSection: React.FC = () => {
                     {getIcon(stream.iconName)}
                   </div>
                   <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-950 border border-slate-700 text-amber-300">
-                    Margin: {stream.marginRange}
+                    毛利率: {stream.marginRange}
                   </span>
                 </div>
 
@@ -102,7 +98,7 @@ export const BusinessModelSection: React.FC = () => {
 
               <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
                 <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
-                  Yr 1 Target Revenue:
+                  首年预测收益:
                 </span>
                 <span className="text-base font-serif font-bold text-amber-400">
                   {formatCurrency(stream.annualProjectedUSD)}
@@ -118,18 +114,18 @@ export const BusinessModelSection: React.FC = () => {
             <div>
               <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">
                 <Sliders className="w-4 h-4" />
-                <span>Interactive Financial Simulator</span>
+                <span>实时交互财务沙盘推演计算器</span>
               </div>
               <h3 className="text-2xl font-serif font-bold text-white">
-                Live Scenario Modeling & Ecosystem Projections
+                动态经营情景模拟与财务产出预测
               </h3>
               <p className="text-xs text-slate-400 mt-0.5">
-                Adjust annual visitor volume, average spend per trip, and merchant network size to simulate regional economic throughput.
+                拖动滑块调整年造访会员规模、单客平均消费额及签约商户网络体量，实时测算沙巴区域生态经济产出与运营商毛利。
               </p>
             </div>
 
             <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 text-right self-start md:self-auto">
-              <span className="text-[10px] uppercase tracking-wider text-slate-400 block">Blended Take-Rate</span>
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 block">综合捕获率 (Take-Rate)</span>
               <span className="text-xl font-serif font-bold text-amber-400">{blendedOperatorTakeRate}%</span>
             </div>
           </div>
@@ -139,9 +135,9 @@ export const BusinessModelSection: React.FC = () => {
             {/* Slider 1: Visiting Members */}
             <div className="space-y-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-slate-300">Annual Visiting Members</span>
+                <span className="font-semibold text-slate-300">年度抵港会员客流</span>
                 <span className="font-serif font-bold text-amber-400 text-sm">
-                  {annualMembers.toLocaleString()} Members
+                  {annualMembers.toLocaleString()} 人次
                 </span>
               </div>
               <input
@@ -154,16 +150,16 @@ export const BusinessModelSection: React.FC = () => {
                 className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
               />
               <div className="flex justify-between text-[10px] text-slate-500">
-                <span>1,000</span>
-                <span>12,500</span>
-                <span>25,000</span>
+                <span>1,000人</span>
+                <span>12,500人</span>
+                <span>25,000人</span>
               </div>
             </div>
 
             {/* Slider 2: Average Spend per Member Trip */}
             <div className="space-y-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-slate-300">Average Spend Per Trip</span>
+                <span className="font-semibold text-slate-300">单客在沙巴平均总消费</span>
                 <span className="font-serif font-bold text-emerald-400 text-sm">
                   {formatCurrency(avgSpendPerTrip)}
                 </span>
@@ -187,9 +183,9 @@ export const BusinessModelSection: React.FC = () => {
             {/* Slider 3: Merchant Network Size */}
             <div className="space-y-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-slate-300">Verified Merchant Partners</span>
+                <span className="font-semibold text-slate-300">沙巴签约联盟商户数</span>
                 <span className="font-serif font-bold text-cyan-400 text-sm">
-                  {merchantCount} Merchants
+                  {merchantCount} 家
                 </span>
               </div>
               <input
@@ -202,9 +198,9 @@ export const BusinessModelSection: React.FC = () => {
                 className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
               />
               <div className="flex justify-between text-[10px] text-slate-500">
-                <span>30</span>
-                <span>140</span>
-                <span>250</span>
+                <span>30家</span>
+                <span>140家</span>
+                <span>250家</span>
               </div>
             </div>
           </div>
@@ -213,32 +209,32 @@ export const BusinessModelSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
             <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-500/20 via-slate-950 to-slate-950 border border-amber-500/40">
               <span className="text-[11px] uppercase tracking-wider text-amber-300 font-bold block">
-                Total Regional Ecosystem GMV
+                沙巴区域生态总 GMV 产出
               </span>
               <div className="text-3xl font-serif font-bold text-white mt-1.5">
                 {formatCurrency(totalEcosystemGMV)}
               </div>
-              <p className="text-xs text-slate-400 mt-1">Total visitor spend flowing through Sabah</p>
+              <p className="text-xs text-slate-400 mt-1">会员在沙巴文旅产业的总注入资金流</p>
             </div>
 
             <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/20 via-slate-950 to-slate-950 border border-emerald-500/40">
               <span className="text-[11px] uppercase tracking-wider text-emerald-300 font-bold block">
-                Operator Gross Revenue Captured
+                运营商直接捕获毛利收益
               </span>
               <div className="text-3xl font-serif font-bold text-emerald-400 mt-1.5">
                 {formatCurrency(totalOperatorGrossRevenue)}
               </div>
-              <p className="text-xs text-slate-400 mt-1">Blended ~{blendedOperatorTakeRate}% operator margin realization</p>
+              <p className="text-xs text-slate-400 mt-1">综合 ~{blendedOperatorTakeRate}% 的高利润率沉淀</p>
             </div>
 
             <div className="p-5 rounded-2xl bg-gradient-to-br from-cyan-500/20 via-slate-950 to-slate-950 border border-cyan-500/40">
               <span className="text-[11px] uppercase tracking-wider text-cyan-300 font-bold block">
-                Direct Merchant Economy Injected
+                注入沙巴实体商户经济规模
               </span>
               <div className="text-3xl font-serif font-bold text-cyan-300 mt-1.5">
                 {formatCurrency(localMerchantEconomyCaptured)}
               </div>
-              <p className="text-xs text-slate-400 mt-1">Direct cash flow to Sabah hotels, dining & vendors</p>
+              <p className="text-xs text-slate-400 mt-1">直达沙巴酒店、海鲜餐厅、珍珠商户的直接产值</p>
             </div>
           </div>
         </div>

@@ -5,15 +5,12 @@ import {
   Compass,
   Clock,
   Sparkles,
-  ShieldCheck,
-  ArrowRight,
-  Star,
-  CheckCircle2
+  ArrowRight
 } from 'lucide-react';
 import { FlagshipPackage } from '../../types';
 
 export const PackagesSection: React.FC = () => {
-  const { setSelectedPackageForModal, formatCurrency, setCurrentMode } = useApp();
+  const { setSelectedPackageForModal, formatCurrency } = useApp();
 
   return (
     <section id="packages" className="py-24 px-4 sm:px-6 lg:px-8 bg-slateDark-950 relative">
@@ -22,13 +19,13 @@ export const PackagesSection: React.FC = () => {
         <div className="text-center space-y-3 max-w-3xl mx-auto">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
             <Compass className="w-3.5 h-3.5" />
-            <span>Curated Product Offerings</span>
+            <span>核心旗舰定制产品矩阵</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            3 Flagship Products
+            3大旗舰定制文旅产品 (Flagship Products)
           </h2>
           <p className="text-sm sm:text-base text-slate-300">
-            Engineered specifically for Hermes high-tier global members: high-margin, ultra-differentiated luxury experiences spanning Kota Kinabalu, Mount Kinabalu, and private islands.
+            专为爱马仕高净值会员深度定制，涵盖亚庇海岸落日、婆罗洲古老雨林与超奢私家海岛买断，构建极高客单与高复游壁垒。
           </p>
         </div>
 
@@ -54,14 +51,14 @@ export const PackagesSection: React.FC = () => {
                       {pkg.badgeText}
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/90 text-amber-300 border border-amber-500/30">
-                      Tier: {pkg.tierRequirement}+
+                      准入: {pkg.tierRequirement}+
                     </span>
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 flex items-baseline justify-between">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-slate-300 font-semibold block">
-                        Duration
+                        行程时长
                       </span>
                       <span className="text-sm font-bold text-white flex items-center space-x-1">
                         <Clock className="w-3.5 h-3.5 text-amber-400" />
@@ -71,7 +68,7 @@ export const PackagesSection: React.FC = () => {
 
                     <div className="text-right">
                       <span className="text-[10px] uppercase tracking-wider text-slate-300 font-semibold block">
-                        Member Price
+                        会员专享价
                       </span>
                       <span className="text-xl font-serif font-bold text-amber-400">
                         {formatCurrency(pkg.priceUSD)}
@@ -97,7 +94,7 @@ export const PackagesSection: React.FC = () => {
 
                   <div className="space-y-2 pt-2 border-t border-slate-800/80">
                     <span className="text-[11px] uppercase tracking-wider font-bold text-amber-400 block">
-                      Signature Highlights:
+                      核心标志亮点:
                     </span>
                     {pkg.highlights.slice(0, 3).map((h, i) => (
                       <div key={i} className="flex items-start space-x-2 text-xs text-slate-300">
@@ -115,7 +112,7 @@ export const PackagesSection: React.FC = () => {
                   onClick={() => setSelectedPackageForModal(pkg)}
                   className="w-full py-3 rounded-xl bg-slate-800 hover:bg-gradient-to-r hover:from-amber-500 hover:to-amber-600 hover:text-slate-950 text-slate-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 border border-slate-700 hover:border-transparent transition-all duration-300 shadow-md"
                 >
-                  <span>Explore Full Itinerary & Book</span>
+                  <span>探索逐日完整行程与预约</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

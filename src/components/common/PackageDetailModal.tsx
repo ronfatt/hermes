@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Sparkles,
   MapPin,
-  Compass,
   ArrowRight,
   User,
   Users
@@ -20,8 +19,7 @@ export const PackageDetailModal: React.FC = () => {
     setSelectedPackageForModal,
     formatCurrency,
     currentMember,
-    addBooking,
-    setCurrentMode
+    addBooking
   } = useApp();
 
   const [selectedDay, setSelectedDay] = useState<number>(1);
@@ -47,9 +45,9 @@ export const PackageDetailModal: React.FC = () => {
       duration: pkg.duration,
       guests: guestCount,
       amountUSD: totalPriceUSD,
-      status: 'Confirmed',
-      specialRequests: specialRequest || 'VIP greeting and room upgrade preference',
-      hotelBooked: pkg.title.includes('Elite') ? 'Gaya Island Resort Presidential Villa' : 'Sutera Harbour Pacific Club Suite'
+      status: '已确认锁定',
+      specialRequests: specialRequest || 'VIP快速通关与高楼层海景房升级偏好',
+      hotelBooked: pkg.title.includes('至尊') ? '加雅岛顶级度假村 总统水上独栋别墅' : '丝绸港麦哲伦 太平洋俱乐部海景套房'
     });
 
     setSelectedPackageForModal(null);
@@ -86,7 +84,7 @@ export const PackageDetailModal: React.FC = () => {
                   {pkg.badgeText}
                 </span>
                 <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800/90 text-amber-300 border border-amber-500/30">
-                  Tier: {pkg.tierRequirement}+
+                  准入级别: {pkg.tierRequirement} 及以上
                 </span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-wide">
@@ -98,7 +96,7 @@ export const PackageDetailModal: React.FC = () => {
             </div>
 
             <div className="text-right bg-slate-950/80 backdrop-blur-md p-3 rounded-xl border border-amber-500/20 self-start sm:self-auto">
-              <span className="text-[11px] uppercase tracking-wider text-slate-400 block">Member Price / Guest</span>
+              <span className="text-[11px] uppercase tracking-wider text-slate-400 block font-medium">会员专享单人售价</span>
               <span className="text-2xl font-serif font-bold text-amber-400">
                 {formatCurrency(pkg.priceUSD)}
               </span>
@@ -116,7 +114,7 @@ export const PackageDetailModal: React.FC = () => {
                 <div className="lg:col-span-2 space-y-4">
                   <div>
                     <h3 className="text-xs uppercase tracking-wider font-bold text-amber-400 mb-2">
-                      Package Experience Overview
+                      套餐核心体验概览
                     </h3>
                     <p className="text-sm text-slate-300 leading-relaxed">
                       {pkg.overview}
@@ -125,7 +123,7 @@ export const PackageDetailModal: React.FC = () => {
 
                   <div>
                     <h4 className="text-xs uppercase tracking-wider font-bold text-amber-400 mb-2">
-                      Signature Highlights
+                      标志性亮点特色
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {pkg.highlights.map((h, i) => (
@@ -142,7 +140,7 @@ export const PackageDetailModal: React.FC = () => {
                 <div className="bg-slate-800/60 p-4 rounded-xl border border-slate-700/80 space-y-3">
                   <h4 className="text-xs uppercase tracking-wider font-bold text-amber-400 flex items-center space-x-1.5">
                     <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                    <span>Hermes VIP Inclusions</span>
+                    <span>爱马仕沙巴专属尊崇礼遇包含</span>
                   </h4>
                   <ul className="space-y-2 text-xs text-slate-300">
                     {pkg.included.map((inc, i) => (
@@ -160,9 +158,9 @@ export const PackageDetailModal: React.FC = () => {
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm uppercase tracking-wider font-bold text-slate-100 flex items-center space-x-2">
                     <Calendar className="w-4 h-4 text-amber-400" />
-                    <span>Curated Day-by-Day Journey</span>
+                    <span>逐日行程奢华体验规划</span>
                   </h3>
-                  <span className="text-xs text-slate-400">Click a day to explore itinerary details</span>
+                  <span className="text-xs text-slate-400">点击切换查看每日行程详情</span>
                 </div>
 
                 {/* Day selector tabs */}
@@ -177,7 +175,7 @@ export const PackageDetailModal: React.FC = () => {
                           : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                       }`}
                     >
-                      Day {item.day}
+                      第 {item.day} 天 (Day {item.day})
                     </button>
                   ))}
                 </div>
@@ -189,7 +187,7 @@ export const PackageDetailModal: React.FC = () => {
                     <div key={it.day} className="mt-4 p-5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3 animate-fadeIn">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <h4 className="text-base font-bold text-amber-300">
-                          Day {it.day}: {it.title}
+                          第 {it.day} 天：{it.title}
                         </h4>
                         <span className="text-xs text-slate-400 flex items-center space-x-1">
                           <MapPin className="w-3.5 h-3.5 text-amber-400" />
@@ -200,7 +198,7 @@ export const PackageDetailModal: React.FC = () => {
                       
                       <div className="pt-2">
                         <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block mb-1.5">
-                          Featured Activities:
+                          当日特色项目:
                         </span>
                         <div className="flex flex-wrap gap-2">
                           {it.activities.map((act, i) => (
@@ -222,18 +220,18 @@ export const PackageDetailModal: React.FC = () => {
             <div className="space-y-6 animate-fadeIn">
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-bold text-amber-300">Reserving {pkg.title}</h4>
-                  <p className="text-xs text-slate-300">VIP Concierge & Seamless Operator Allocation</p>
+                  <h4 className="text-sm font-bold text-amber-300">正在锁定预订：{pkg.title}</h4>
+                  <p className="text-xs text-slate-300">沙巴区域运营商专属管家一对一无缝直通</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-slate-400">Total Price:</span>
+                  <span className="text-xs text-slate-400">预订总额:</span>
                   <p className="text-xl font-serif font-bold text-amber-400">{formatCurrency(totalPriceUSD)}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">Member Booking</label>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">预订会员档案</label>
                   <div className="p-3 bg-slate-800 rounded-lg border border-slate-700 text-xs text-slate-200 flex items-center space-x-2">
                     <User className="w-4 h-4 text-amber-400" />
                     <span>{currentMember.name} ({currentMember.tier} · {currentMember.country})</span>
@@ -241,7 +239,7 @@ export const PackageDetailModal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">Preferred Travel Date</label>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">期望抵港出行日期</label>
                   <input
                     type="date"
                     value={travelDate}
@@ -251,7 +249,7 @@ export const PackageDetailModal: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">Number of Guests</label>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">出行贵宾人数</label>
                   <div className="flex items-center space-x-3">
                     {[1, 2, 3, 4, 6].map(num => (
                       <button
@@ -264,17 +262,17 @@ export const PackageDetailModal: React.FC = () => {
                             : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                         }`}
                       >
-                        {num} {num === 1 ? 'Guest' : 'Guests'}
+                        {num} 位贵宾
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">VIP Special Requests / Dietary</label>
+                  <label className="text-xs font-semibold text-slate-300 block mb-1.5">VIP定制偏好 / 餐饮禁忌 / 特殊需求</label>
                   <input
                     type="text"
-                    placeholder="e.g. Helicopter transfer, Champagne on arrival, Sea-view villa"
+                    placeholder="如：需要机坪直升机转机、海景总统套房、迎宾香槟冰镇"
                     value={specialRequest}
                     onChange={e => setSpecialRequest(e.target.value)}
                     className="w-full p-2.5 bg-slate-800 rounded-lg border border-slate-700 text-xs text-slate-200 focus:border-amber-500 focus:outline-none"
@@ -290,14 +288,14 @@ export const PackageDetailModal: React.FC = () => {
           {!isBookingStep ? (
             <>
               <div className="text-xs text-slate-400 hidden sm:block">
-                Protected by Hermes Regional Operator Escort Guarantee
+                受爱马仕沙巴区域运营商全程VIP履约与安保保障
               </div>
               <div className="flex items-center space-x-3 w-full sm:w-auto justify-end">
                 <button
                   onClick={() => setIsBookingStep(true)}
                   className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-gold-sm hover:shadow-gold-lg transition-all"
                 >
-                  <span>Instant Reserve Package</span>
+                  <span>立即体验预订套餐</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -308,7 +306,7 @@ export const PackageDetailModal: React.FC = () => {
                 onClick={() => setIsBookingStep(false)}
                 className="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-xs"
               >
-                Back to Details
+                返回行程详情
               </button>
 
               <button
@@ -316,7 +314,7 @@ export const PackageDetailModal: React.FC = () => {
                 className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center space-x-2 shadow-emerald-lg transition-all"
               >
                 <CheckCircle2 className="w-4 h-4" />
-                <span>Confirm & Issue H-Pass Voucher</span>
+                <span>确认并即刻签发 H-Pass 电子行程通票</span>
               </button>
             </>
           )}

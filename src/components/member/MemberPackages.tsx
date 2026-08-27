@@ -2,37 +2,33 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { FLAGSHIP_PACKAGES } from '../../data/ecosystemData';
 import {
-  Compass,
   Clock,
   Sparkles,
-  ShieldCheck,
-  ArrowRight,
-  Filter,
-  Star
+  ArrowRight
 } from 'lucide-react';
 import { FlagshipPackage } from '../../types';
 
 export const MemberPackages: React.FC = () => {
-  const { setSelectedPackageForModal, formatCurrency, currentMember } = useApp();
-  const [filterTier, setFilterTier] = useState<string>('All');
+  const { setSelectedPackageForModal, formatCurrency } = useApp();
+  const [filterTier, setFilterTier] = useState<string>('全部');
 
-  const filteredPackages = filterTier === 'All'
+  const filteredPackages = filterTier === '全部'
     ? FLAGSHIP_PACKAGES
-    : FLAGSHIP_PACKAGES.filter(p => p.tierRequirement === filterTier);
+    : FLAGSHIP_PACKAGES.filter(p => p.tierRequirement.includes(filterTier));
 
   return (
     <div className="space-y-8 animate-fadeIn">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-white">Flagship Sabah Packages</h2>
+          <h2 className="text-2xl font-serif font-bold text-white">沙巴旗舰高定文旅套餐</h2>
           <p className="text-xs text-slate-400 mt-1">
-            Exclusive all-inclusive journeys with dedicated Hermes concierge, 5-star suites, and private yacht/helicopter transfers.
+            一价全包式奢华体验，配备专职双语旅行管家、五星级海景套房、私人双体帆船与空客直升机接驳。
           </p>
         </div>
 
         {/* Filter Tier Tabs */}
         <div className="flex items-center space-x-2 bg-slate-900 p-1 rounded-xl border border-slate-800 self-start sm:self-auto">
-          {['All', 'Gold', 'Platinum', 'Black VIP'].map(t => (
+          {['全部', '金卡', '白金', '黑金'].map(t => (
             <button
               key={t}
               onClick={() => setFilterTier(t)}
@@ -69,7 +65,7 @@ export const MemberPackages: React.FC = () => {
                     {pkg.badgeText}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/90 text-amber-300 border border-amber-500/30">
-                    Tier: {pkg.tierRequirement}+
+                    准入: {pkg.tierRequirement}+
                   </span>
                 </div>
 
@@ -79,7 +75,7 @@ export const MemberPackages: React.FC = () => {
                     <span>{pkg.duration}</span>
                   </span>
                   <span className="text-lg font-serif font-bold text-amber-400">
-                    {formatCurrency(pkg.priceUSD)} <span className="text-[10px] text-slate-400 font-sans">/ guest</span>
+                    {formatCurrency(pkg.priceUSD)} <span className="text-[10px] text-slate-400 font-sans">/ 单人</span>
                   </span>
                 </div>
               </div>
@@ -94,7 +90,7 @@ export const MemberPackages: React.FC = () => {
 
                 <div className="space-y-1.5 pt-2 border-t border-slate-800">
                   <span className="text-[10px] uppercase tracking-wider font-bold text-amber-400 block">
-                    Highlights:
+                    核心亮点:
                   </span>
                   {pkg.highlights.slice(0, 2).map((h, i) => (
                     <div key={i} className="flex items-start space-x-1.5 text-xs text-slate-300">
@@ -111,7 +107,7 @@ export const MemberPackages: React.FC = () => {
                 onClick={() => setSelectedPackageForModal(pkg)}
                 className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-gold-sm transition-all"
               >
-                <span>View Itinerary & Reserve</span>
+                <span>查看逐日行程与即刻锁定</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
