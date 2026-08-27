@@ -106,11 +106,11 @@ export const FLAGSHIP_PACKAGES: FlagshipPackage[] = [
     tierRequirement: '金卡 (Gold)',
     marginPercentage: 28,
     badgeText: '入门旗舰·高周转爆款',
-    heroImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80',
+    heroImage: '/luxury-water-villa.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&auto=format&fit=crop&q=80'
+      '/luxury-water-villa.jpg',
+      '/hermes-resort-island.jpg',
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop&q=80'
     ],
     overview: '专为首次造访沙巴的爱马仕会员量身定制的极致海滨轻奢之旅。涵盖全球排名前三的丹绒亚路日落私人双体帆船香槟包船、东姑阿都拉曼国家海洋公园VIP珊瑚浮潜，以及直通亚庇顶级活海鲜私房料理。',
     highlights: [
@@ -168,11 +168,11 @@ export const FLAGSHIP_PACKAGES: FlagshipPackage[] = [
     tierRequirement: '白金卡 (Platinum)',
     marginPercentage: 25,
     badgeText: '生态奢华·核心支柱',
-    heroImage: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=1200&auto=format&fit=crop&q=80',
+    heroImage: '/hermes-resort-island.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop&q=80'
+      '/hermes-resort-island.jpg',
+      '/luxury-water-villa.jpg',
+      'https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=800&auto=format&fit=crop&q=80'
     ],
     overview: '深度沉浸于婆罗洲拥有1.3亿年历史的地球最古老热带雨林，以及联合国教科文组织“三冠王”神山高地。结合高海拔私密山间别墅、直升机空中鸟瞰神山花岗岩峰顶与高山有机农庄料理。',
     highlights: [
@@ -244,11 +244,11 @@ export const FLAGSHIP_PACKAGES: FlagshipPackage[] = [
     tierRequirement: '黑金VIP卡 (Black VIP)',
     marginPercentage: 22,
     badgeText: '超高净值·黑卡独享',
-    heroImage: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&auto=format&fit=crop&q=80',
+    heroImage: '/hermes-resort-island.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&auto=format&fit=crop&q=80'
+      '/hermes-resort-island.jpg',
+      '/luxury-water-villa.jpg',
+      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80'
     ],
     overview: '东南亚超奢定制旅行的巅峰之作。专为爱马仕黑卡VIP会员打造，提供加雅岛总统水上别墅买断、70英尺超级游艇穿梭珊瑚大三角、直升机从机场机坪直飞海岛停机坪，以及全天候24小时私人管家与安保陪同。',
     highlights: [

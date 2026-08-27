@@ -28,7 +28,7 @@ export const WhySabahSection: React.FC = () => {
       title: '联合国教科文组织“三冠王”与远古雨林',
       subtitle: '拥有1.3亿年历史的亚洲生态生物多样性宝库',
       badge: '亚洲生态之都',
-      image: 'https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&auto=format&fit=crop&q=80',
+      image: '/hermes-resort-island.jpg',
       description: '沙巴是全球极少数同时荣获联合国教科文组织 (UNESCO) “三冠王”殊荣（世界自然遗产、世界生物圈保护区、世界地质公园）的圣地。海拔4,095米的神山（京那巴鲁山）构筑起无可替代的生态野奢高地。',
       bullets: [
         '拥有超过5,000种高等植物与600余种野生珍稀兰花品种',
@@ -42,7 +42,7 @@ export const WhySabahSection: React.FC = () => {
       title: '世界级珊瑚大三角与海岛私密奢华',
       subtitle: '距亚庇市中心仅15分钟航程的纯净海洋秘境',
       badge: '珊瑚大三角核心',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80',
+      image: '/luxury-water-villa.jpg',
       description: '从亚庇市区码头乘私人快艇或游艇仅需15分钟，即可直达东姑阿都拉曼国家海洋公园5座纯净海岛，加雅岛的顶级水上独栋别墅与丹绒亚路世界级日落在此交相辉映。',
       bullets: [
         '东姑阿都拉曼国家海洋公园5座私密海岛与未受污染的珊瑚礁',
