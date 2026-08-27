@@ -97,14 +97,14 @@ export const MemberFlowSection: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>端到端会员完整生命周期</span>
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>端到端会员全生命周期</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            会员全生命周期旅程 (Member Journey Flow)
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+            会员全生命周期旅程与转化
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
             从线上发现沙巴、一键预订、机坪VIP抵港、出示通票到全域商户消费与积分复游的完整商业闭环。
           </p>
         </div>

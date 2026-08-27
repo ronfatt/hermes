@@ -85,15 +85,15 @@ export const WhySabahSection: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
-            <Compass className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            <Compass className="w-3.5 h-3.5 text-amber-400" />
             <span>战略区位与核心优势</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
             为什么选择沙巴与亚庇作为落地枢纽？
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
-            地处亚洲几何中心，4小时飞行半径覆盖亚太最富庶金融都市，兼具世界级自然奇观、顶尖会奖设施与极佳营商环境。
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            地处亚洲几何中心，4小时飞行半径覆盖亚太核心都市，兼具世界级自然奇观、顶尖会奖设施与极佳营商环境。
           </p>
         </div>
 

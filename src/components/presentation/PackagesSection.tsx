@@ -17,14 +17,14 @@ export const PackagesSection: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
-            <Compass className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            <Compass className="w-3.5 h-3.5 text-amber-400" />
             <span>核心旗舰定制产品矩阵</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            3大旗舰定制文旅产品 (Flagship Products)
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+            三大沙巴旗舰定制文旅产品
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
             专为爱马仕高净值会员深度定制，涵盖亚庇海岸落日、婆罗洲古老雨林与超奢私家海岛买断，构建极高客单与高复游壁垒。
           </p>
         </div>

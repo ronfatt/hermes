@@ -33,14 +33,14 @@ export const MerchantsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-            <Store className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            <Store className="w-3.5 h-3.5 text-amber-400" />
             <span>沙巴高净值联盟商户生态</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            沙巴签约商户网络 (Partner Network)
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+            沙巴签约联盟商户网络
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
             由沙巴顶尖奢华酒店、海鲜殿堂、独立岛屿水疗、南洋金珠工坊与专车直升机机队组成的紧密商业联盟，统一接入爱马仕 H Pass 权益通票。
           </p>
         </div>

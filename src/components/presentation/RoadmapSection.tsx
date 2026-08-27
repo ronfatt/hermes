@@ -14,14 +14,14 @@ export const RoadmapSection: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-wider">
-            <Milestone className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider">
+            <Milestone className="w-3.5 h-3.5 text-amber-400" />
             <span>清晰扎实的业务推进节奏</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-            三阶段战略增长规划 (3-Phase Roadmap)
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+            三阶段战略增长与落地规划
           </h2>
-          <p className="text-sm sm:text-base text-slate-300">
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
             从亚庇核心门户的快速落地，到全沙巴高地海岛走廊的纵深拓展，最终建立千万美元级年度GMV的区域文旅商业生态。
           </p>
         </div>
