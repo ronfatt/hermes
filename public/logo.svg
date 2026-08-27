@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Outer Circle Gradient -->
+    <radialGradient id="circleGrad" cx="38%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="45%" stop-color="#FF7A00"/>
+      <stop offset="100%" stop-color="#DE4A00"/>
+    </radialGradient>
+    
+    <!-- Hexagon Inner Gradient -->
+    <linearGradient id="hexGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DE4A00"/>
+      <stop offset="100%" stop-color="#A82E00"/>
+    </linearGradient>
+
+    <!-- Subtle Glow Shadow -->
+    <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FF7A00" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Orange Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#circleGrad)" filter="url(#logoShadow)"/>
+
+  <!-- Inner Hexagon with Thick White Border -->
+  <!-- Hexagon points centered at (100, 100) with radius approx 56 -->
+  <!-- Top: (100, 46), Top-Right: (148, 73), Bottom-Right: (148, 127), Bottom: (100, 154), Bottom-Left: (52, 127), Top-Left: (52, 73) -->
+  <polygon 
+    points="100,44 149,72 149,128 100,156 51,128 51,72" 
+    fill="url(#hexGrad)" 
+    stroke="#FFFFFF" 
+    stroke-width="7.5" 
+    stroke-linejoin="round"
+  />
+
+  <!-- Bold White 'H' Letter with rounded bars -->
+  <!-- Left vertical bar -->
+  <rect x="71" y="68" width="13.5" height="64" rx="4" fill="#FFFFFF"/>
+  <!-- Right vertical bar -->
+  <rect x="115.5" y="68" width="13.5" height="64" rx="4" fill="#FFFFFF"/>
+  <!-- Horizontal crossbar -->
+  <rect x="71" y="93.5" width="58" height="13" rx="2" fill="#FFFFFF"/>
+</svg>

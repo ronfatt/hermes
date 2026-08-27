@@ -64,9 +64,7 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = ({ setActiveTab }
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-serif font-black text-sm">
-                  H
-                </div>
+                <img src="/logo.svg" alt="H Pass Logo" className="w-8 h-8 rounded-full shadow-md shrink-0" />
                 <div>
                   <h3 className="text-xs font-serif font-bold text-amber-300 tracking-wider">HERMES SABAH</h3>
                   <p className="text-[10px] text-slate-400 uppercase tracking-widest">沙巴数字身份通票</p>

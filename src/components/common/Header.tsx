@@ -123,10 +123,8 @@ export const Header: React.FC = () => {
           }}
           className="flex items-center space-x-3 cursor-pointer group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-600 to-amber-900 p-0.5 shadow-gold-sm group-hover:shadow-gold-lg transition-all duration-300">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <span className="font-serif font-black text-lg text-amber-400 tracking-tighter">H</span>
-            </div>
+          <div className="w-10 h-10 rounded-full p-0.5 shadow-gold-sm group-hover:shadow-gold-lg transition-all duration-300 flex items-center justify-center shrink-0">
+            <img src="/logo.svg" alt="Hermes Logo" className="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300" />
           </div>
           <div>
             <div className="flex items-center space-x-1.5">
