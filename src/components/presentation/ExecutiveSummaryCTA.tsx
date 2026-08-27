@@ -49,11 +49,11 @@ export const ExecutiveSummaryCTA: React.FC = () => {
             <span>高管汇报总结与下一步推进</span>
           </div>
 
-          <div className="space-y-4 max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
-              即刻启动爱马仕沙巴区域运营商落地引擎
+          <div className="space-y-4 max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight text-balance">
+              即刻启动爱马仕沙巴 <br className="hidden sm:inline" /> 区域运营商落地引擎
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-2xl mx-auto text-balance">
               将沙巴打造为爱马仕全球会员首屈一指的生态度假乐园，同时为运营商锁定高确定性、强现金流的丰厚年回报。
             </p>
           </div>
