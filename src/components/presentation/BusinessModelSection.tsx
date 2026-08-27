@@ -1,0 +1,248 @@
+import React, { useState } from 'react';
+import { useApp } from '../../context/AppContext';
+import { REVENUE_STREAMS } from '../../data/ecosystemData';
+import {
+  Compass,
+  Building2,
+  Car,
+  Store,
+  Ticket,
+  ShoppingBag,
+  TrendingUp,
+  Sliders,
+  DollarSign,
+  PieChart,
+  CheckCircle2,
+  Sparkles
+} from 'lucide-react';
+
+export const BusinessModelSection: React.FC = () => {
+  const { formatCurrency } = useApp();
+
+  // Interactive Scenario Simulator States
+  const [annualMembers, setAnnualMembers] = useState<number>(8500);
+  const [avgSpendPerTrip, setAvgSpendPerTrip] = useState<number>(3400);
+  const [merchantCount, setMerchantCount] = useState<number>(80);
+
+  // Dynamic Financial Math
+  const totalEcosystemGMV = annualMembers * avgSpendPerTrip;
+  
+  // 6 Revenue Stream Breakdowns
+  const tourMarginAmount = totalEcosystemGMV * 0.45 * 0.25; // 45% of GMV in packages, 25% margin
+  const hotelCommissionAmount = totalEcosystemGMV * 0.25 * 0.15; // 25% of GMV in hotels, 15% comm
+  const transportMarginAmount = totalEcosystemGMV * 0.12 * 0.28; // 12% in transport, 28% margin
+  const merchantFeeAmount = merchantCount * 3800; // Annual listing & campaign fees
+  const eventRevenueAmount = annualMembers * 0.15 * 650 * 0.40; // 15% members attend events @ $650, 40% margin
+  const marketplaceCommissionAmount = totalEcosystemGMV * 0.18 * 0.12; // 18% in marketplace goods, 12% comm
+
+  const totalOperatorGrossRevenue =
+    tourMarginAmount +
+    hotelCommissionAmount +
+    transportMarginAmount +
+    merchantFeeAmount +
+    eventRevenueAmount +
+    marketplaceCommissionAmount;
+
+  const localMerchantEconomyCaptured = totalEcosystemGMV - totalOperatorGrossRevenue;
+  const blendedOperatorTakeRate = ((totalOperatorGrossRevenue / totalEcosystemGMV) * 100).toFixed(1);
+
+  const getIcon = (name: string) => {
+    switch (name) {
+      case 'Compass': return <Compass className="w-5 h-5" />;
+      case 'Building2': return <Building2 className="w-5 h-5" />;
+      case 'Car': return <Car className="w-5 h-5" />;
+      case 'Store': return <Store className="w-5 h-5" />;
+      case 'Ticket': return <Ticket className="w-5 h-5" />;
+      default: return <ShoppingBag className="w-5 h-5" />;
+    }
+  };
+
+  return (
+    <section id="business-model" className="py-24 px-4 sm:px-6 lg:px-8 bg-slateDark-900 relative">
+      <div className="max-w-7xl mx-auto space-y-16">
+        {/* Section Header */}
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <DollarSign className="w-3.5 h-3.5" />
+            <span>Monetization Architecture</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+            Business Model & Revenue Engines
+          </h2>
+          <p className="text-sm sm:text-base text-slate-300">
+            A resilient multi-stream revenue model capturing high margins across luxury travel packages, wholesale hotel margins, merchant listing fees, and ecosystem commerce.
+          </p>
+        </div>
+
+        {/* 6 Core Revenue Stream Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {REVENUE_STREAMS.map(stream => (
+            <div
+              key={stream.id}
+              className="glass-card p-6 rounded-2xl border-slate-800 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div
+                    className="p-3 rounded-xl bg-slate-950 border border-slate-800"
+                    style={{ color: stream.color }}
+                  >
+                    {getIcon(stream.iconName)}
+                  </div>
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-950 border border-slate-700 text-amber-300">
+                    Margin: {stream.marginRange}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-bold text-white">{stream.title}</h3>
+                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">{stream.description}</p>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+                  Yr 1 Target Revenue:
+                </span>
+                <span className="text-base font-serif font-bold text-amber-400">
+                  {formatCurrency(stream.annualProjectedUSD)}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Interactive Scenario & Unit Economics Simulator */}
+        <div className="glass-card p-6 sm:p-10 rounded-2xl border-amber-500/30 bg-slate-900/90 shadow-gold-sm space-y-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+            <div>
+              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-1">
+                <Sliders className="w-4 h-4" />
+                <span>Interactive Financial Simulator</span>
+              </div>
+              <h3 className="text-2xl font-serif font-bold text-white">
+                Live Scenario Modeling & Ecosystem Projections
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Adjust annual visitor volume, average spend per trip, and merchant network size to simulate regional economic throughput.
+              </p>
+            </div>
+
+            <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 text-right self-start md:self-auto">
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 block">Blended Take-Rate</span>
+              <span className="text-xl font-serif font-bold text-amber-400">{blendedOperatorTakeRate}%</span>
+            </div>
+          </div>
+
+          {/* Sliders Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Slider 1: Visiting Members */}
+            <div className="space-y-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold text-slate-300">Annual Visiting Members</span>
+                <span className="font-serif font-bold text-amber-400 text-sm">
+                  {annualMembers.toLocaleString()} Members
+                </span>
+              </div>
+              <input
+                type="range"
+                min="1000"
+                max="25000"
+                step="500"
+                value={annualMembers}
+                onChange={e => setAnnualMembers(Number(e.target.value))}
+                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+              />
+              <div className="flex justify-between text-[10px] text-slate-500">
+                <span>1,000</span>
+                <span>12,500</span>
+                <span>25,000</span>
+              </div>
+            </div>
+
+            {/* Slider 2: Average Spend per Member Trip */}
+            <div className="space-y-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold text-slate-300">Average Spend Per Trip</span>
+                <span className="font-serif font-bold text-emerald-400 text-sm">
+                  {formatCurrency(avgSpendPerTrip)}
+                </span>
+              </div>
+              <input
+                type="range"
+                min="1500"
+                max="8000"
+                step="100"
+                value={avgSpendPerTrip}
+                onChange={e => setAvgSpendPerTrip(Number(e.target.value))}
+                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+              />
+              <div className="flex justify-between text-[10px] text-slate-500">
+                <span>$1,500</span>
+                <span>$4,750</span>
+                <span>$8,000</span>
+              </div>
+            </div>
+
+            {/* Slider 3: Merchant Network Size */}
+            <div className="space-y-3 p-4 bg-slate-950 rounded-xl border border-slate-800">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold text-slate-300">Verified Merchant Partners</span>
+                <span className="font-serif font-bold text-cyan-400 text-sm">
+                  {merchantCount} Merchants
+                </span>
+              </div>
+              <input
+                type="range"
+                min="30"
+                max="250"
+                step="5"
+                value={merchantCount}
+                onChange={e => setMerchantCount(Number(e.target.value))}
+                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+              />
+              <div className="flex justify-between text-[10px] text-slate-500">
+                <span>30</span>
+                <span>140</span>
+                <span>250</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Dynamic Financial Results Display */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-500/20 via-slate-950 to-slate-950 border border-amber-500/40">
+              <span className="text-[11px] uppercase tracking-wider text-amber-300 font-bold block">
+                Total Regional Ecosystem GMV
+              </span>
+              <div className="text-3xl font-serif font-bold text-white mt-1.5">
+                {formatCurrency(totalEcosystemGMV)}
+              </div>
+              <p className="text-xs text-slate-400 mt-1">Total visitor spend flowing through Sabah</p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/20 via-slate-950 to-slate-950 border border-emerald-500/40">
+              <span className="text-[11px] uppercase tracking-wider text-emerald-300 font-bold block">
+                Operator Gross Revenue Captured
+              </span>
+              <div className="text-3xl font-serif font-bold text-emerald-400 mt-1.5">
+                {formatCurrency(totalOperatorGrossRevenue)}
+              </div>
+              <p className="text-xs text-slate-400 mt-1">Blended ~{blendedOperatorTakeRate}% operator margin realization</p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-cyan-500/20 via-slate-950 to-slate-950 border border-cyan-500/40">
+              <span className="text-[11px] uppercase tracking-wider text-cyan-300 font-bold block">
+                Direct Merchant Economy Injected
+              </span>
+              <div className="text-3xl font-serif font-bold text-cyan-300 mt-1.5">
+                {formatCurrency(localMerchantEconomyCaptured)}
+              </div>
+              <p className="text-xs text-slate-400 mt-1">Direct cash flow to Sabah hotels, dining & vendors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
